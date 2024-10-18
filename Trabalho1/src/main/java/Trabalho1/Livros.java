@@ -1,13 +1,17 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package Trabalho1;
 
-/**
- *
- * @author aluno
- */
 public class Livros {
+    private String nomeLivro;
+    private String nomeAutor;
+    private String anoPublicacao;
+    private int numeroExemplares;
+    
+    Livros(String nomeLivro, String nomeAutor, String anoPublicacao, int numeroExemplares){
+       this.nomeLivro = nomeLivro;
+       this.nomeAutor = nomeAutor;
+       this.anoPublicacao = anoPublicacao;
+       this.numeroExemplares = numeroExemplares;
+    }
+    
     
 }
