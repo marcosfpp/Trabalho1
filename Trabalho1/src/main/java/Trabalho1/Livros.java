@@ -11,7 +11,13 @@ public class Livros {
        this.nomeAutor = nomeAutor;
        this.anoPublicacao = anoPublicacao;
        this.numeroExemplares = numeroExemplares;
-    }
+    };
     
+    public int setPegarlivro(int numeroExemplares){
+        this.numeroExemplares--;
+    };
+    public int setDevolverLivros(int numeroExemplares){
+        this.numeroExemplares++;
+    }; 
     
 }
