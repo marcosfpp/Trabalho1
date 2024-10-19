@@ -1,13 +1,16 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
+
 package Trabalho1;
 
-/**
- *
- * @author aluno
- */
 public class Clientes {
+    
+    private String nome;
+    private String email;
+    private int numeroID;
+    
+        Clientes(String nome, String email, int numeroID){
+            this.nome = nome;
+            this.email = email;
+            this.numeroID = numeroID;
+    }
     
 }
