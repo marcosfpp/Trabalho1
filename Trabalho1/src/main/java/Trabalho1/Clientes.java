@@ -7,12 +7,14 @@ public class Clientes {
     private String email;
     private int numeroID;
     
+        //Criação do Construtor
         Clientes(String nome, String email, int numeroID){
             this.nome = nome;
             this.email = email;
             this.numeroID = numeroID;
         }
 
+        //Criação de gets e listagens
         public String getNome() {
             return this.nome;
         }
@@ -25,7 +27,11 @@ public class Clientes {
         public String listarCLientes(){
             return "Cliente: " + this.nome;
         }
+        public String listarDados(){
+            return "Cliente: " + this.nome + "\n Email: " + this.email;
         
+        }
+
 
         
         
