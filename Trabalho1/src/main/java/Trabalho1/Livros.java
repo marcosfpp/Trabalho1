@@ -13,10 +13,26 @@ public class Livros {
        this.numeroExemplares = numeroExemplares;
     }
     
+    public boolean verficarDisponibidade(){
+        if (this.numeroExemplares != 0){
+            return true;
+        }
+    }
     public int setPegarlivro(int numeroExemplares){
-        this.numeroExemplares--;
+        if (this.numeroExemplares >= 0){
+            System.out.println("Não possui exemplares disponíveis.");
+        }
+        else {
+            this.numeroExemplares--;
+        }
     }
     public int setDevolverLivros(int numeroExemplares){
         this.numeroExemplares++;
+    }
+    public String getMostrarDadosStrings(){
+        return this.nomeLivro + this.nomeAutor;
+    }
+    public int getMostrarDadosInt(){
+        return this.anoPublicacao + this.numeroExemplares;
     }
 }
