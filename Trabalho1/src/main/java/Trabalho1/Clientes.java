@@ -6,13 +6,16 @@ public class Clientes {
     private String nome;
     private String email;
     private int numeroID;
+    private int telefone;
+    
     
         //Criação do Construtor
-        Clientes(String nome, String email, int numeroID){
+        Clientes(String nome, String email, int numeroID, String telefone){
             this.nome = nome;
             this.email = email;
             this.numeroID = numeroID;
         }
+        
 
         //Criação de gets e listagens
         public String getNome() {
@@ -29,8 +32,9 @@ public class Clientes {
         }
         public String listarDados(){
             return "Cliente: " + this.nome + "\n Email: " + this.email;
-        
         }
+
+        
 
 
         
