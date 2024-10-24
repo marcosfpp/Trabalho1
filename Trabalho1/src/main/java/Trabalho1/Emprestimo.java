@@ -21,6 +21,14 @@ public void emprestar() {
    }
 }
     
-
+public static void main(String[] args) {
+    Scanner scanner = new Scanner(System.in);
+    
+    // Criando dois empréstimos de livros
+    Emprestimo emprestimo1 = new Emprestimo("1984");
+    Emprestimo emprestimo2 = new Emprestimo("O pequeno Gigante");
+    
+    int opcao;
+}
 
 }
