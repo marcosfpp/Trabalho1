@@ -29,6 +29,24 @@ public static void main(String[] args) {
     Emprestimo emprestimo2 = new Emprestimo("O pequeno Gigante");
     
     int opcao;
-}
+    
+    do{ 
+        System.out.println("\n--- Menu de Empréstimo de Livros ---");
+        System.out.println("1. Emprestar '1984'");
+        System.out.println("2. Emprestar 'O Pequeno Gigante'");
+        System.out.println("0. Sair");
+        System.out.println("Escolha uma opção: ");
+        
+        opcao = scanner.nextInt();
+        
+        
+        
+    
+        
+        
+   }     
+        
+  }
 
 }
+    
