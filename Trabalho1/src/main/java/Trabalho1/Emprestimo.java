@@ -39,14 +39,27 @@ public static void main(String[] args) {
         
         opcao = scanner.nextInt();
         
+        switch (opcao) {
+            
+            case 1:
+            emprestimo1.emprestar();
+                break;
+            case 2:
+                emprestimo2.emprestar();
+                break;
+            case 0:
+                System.out.println("Saindo...");
+                break;
+            default:
+                System.out.println("Opção inválida.");
+        }
+        
         
         
     
-        
-        
-   }     
-        
-  }
-
+    }
 }
+        
+}
+
     
