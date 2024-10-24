@@ -16,7 +16,11 @@ public void emprestar() {
    if (!emprestado) { 
       emprestado = true;
        System.out.println("Livro " + " emprestado.");
+   } else {
+       System.out.println("Livro " + livro + " já está emprestado."); 
    }
 }
     
+
+
 }
