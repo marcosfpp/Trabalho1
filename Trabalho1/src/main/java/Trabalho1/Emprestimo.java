@@ -30,7 +30,14 @@ public void devolver() {
    }
 }
  
-
+// Método para verificar se o livro está emprestado
+public boolean isEmprestado() {
+    return emprestado;
+    }
+//Método para obter o título do livro
+public String getlivro() {
+    return livro;
+    }
 
 
 }
