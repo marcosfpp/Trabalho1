@@ -1,7 +1,5 @@
 package Trabalho1;
 
-import java.util.Scanner;
-
 public class Emprestimo {
 private String livro;
 private boolean emprestado;
