@@ -19,10 +19,25 @@ public class AppClientes {
 
         }
 
+        
         public static void main(String[] args) {
             Scanner scan = new Scanner(System.in);
-
-            while (opc != 5) {                
+            
+            //acesso ao menu
+            menu();
+            System.out.println("Escolha a opção desejada: ");
+            int opc = scan.nextInt();
+            
+            
+            while (opc != 5) {
+                switch(opc){
+                    
+                    case 1: 
+                    
+                    
+                    
+                    
+                }
                 
             }
             
