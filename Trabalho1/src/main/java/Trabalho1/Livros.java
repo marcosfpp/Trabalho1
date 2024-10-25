@@ -16,6 +16,8 @@ public class Livros {
     public boolean verficarDisponibidade(){
         if (this.numeroExemplares != 0){
             return true;
+        }else {
+            return false;
         }
     }
     public int setPegarlivro(int numeroExemplares){
@@ -25,9 +27,11 @@ public class Livros {
         else {
             this.numeroExemplares--;
         }
+        return 0;
     }
     public int setDevolverLivros(int numeroExemplares){
         this.numeroExemplares++;
+        return 0;
     }
     public String getMostrarDadosStrings(){
         return this.nomeLivro + this.nomeAutor;
