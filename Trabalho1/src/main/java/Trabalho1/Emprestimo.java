@@ -87,7 +87,7 @@ class Cliente {
     // Método para verificar se há algum empréstimo ativo
     public boolean temEmprestimoAtivoParaLivro(String livro) {
         for (Emprestimo emprestimo : emprestimos) {
-            if (emprestimo.isEmprestado()) {
+            if (emprestimo.getlivro().equalsIgnoreCase(livro) && emprestimo.isEmprestado()) {
                 return true;
             }
         }
