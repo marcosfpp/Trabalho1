@@ -1,12 +1,13 @@
-
 package Trabalho1;
 
 public class Clientes {
     
     private String nome;
     private String email;
+    private String telefone;
     private int numeroID;
-    private int telefone;
+ 
+
     
         //Criação do Construtor
         Clientes(String nome, String email, int numeroID, String telefone){

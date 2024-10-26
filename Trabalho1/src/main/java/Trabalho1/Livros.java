@@ -34,9 +34,12 @@ public class Livros {
         return 0;
     }
     public String getMostrarDadosStrings(){
-        return this.nomeLivro + this.nomeAutor;
+        return this.nomeLivro + "\n" + this.nomeAutor;
     }
-    public int getMostrarDadosInt(){
-        return this.anoPublicacao + this.numeroExemplares;
+    public int getMostrarPublicacao(){
+        return this.anoPublicacao;
+    }
+    public int getMostrarExemplares(){
+        return this.numeroExemplares;
     }
 }
