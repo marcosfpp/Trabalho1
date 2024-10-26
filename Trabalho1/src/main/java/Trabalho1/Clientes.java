@@ -8,7 +8,6 @@ public class Clientes {
     private int numeroID;
     private int telefone;
     
-    
         //Criação do Construtor
         Clientes(String nome, String email, int numeroID, String telefone){
             this.nome = nome;
@@ -21,17 +20,15 @@ public class Clientes {
         public String getNome() {
             return this.nome;
         }
-        public String getEmail() {
-            return this.email;
-        }
-        public int getNumeroID() {
+
+        public int getID() {
             return this.numeroID;
         }
-        public String listarCLientes(){
-            return "Cliente: " + this.nome;
-        }
-        public String listarDados(){
-            return "Cliente: " + this.nome + "\n Email: " + this.email;
+
+        //Método para listagem
+        @Override
+        public String toString (){
+            return "Nome:" + this.nome + " com o ID: " + this.numeroID;
         }
 
         
