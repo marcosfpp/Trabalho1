@@ -24,9 +24,16 @@ public void emprestar() {
        System.out.println("Livro " + livro + " já está emprestado."); 
    }
 }
-
-public void emprestar
-
+// Sobrecarga do método emprestar para especificar uma data de empréstimo.
+public void emprestar(LocalDate data) {
+if (!emprestado) {
+    emprestado = true;
+    dataEmprestimo = data;
+    System.out.println("Livro " + livro + " emprestado em " + dataEmprestimo + ".");
+} else {
+    System.out.println("Livro " + livro + " já está emprestado.");
+       }
+}
 
 
 public void devolver() {
