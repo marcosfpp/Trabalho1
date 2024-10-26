@@ -14,7 +14,7 @@ public Emprestimo(String livro) {
  this.emprestado = false;
 
 }
- 
+ // Método para emprestar sem data específica (assume a data de hoje)
 public void emprestar() {
    if (!emprestado) { 
       emprestado = true;
@@ -34,13 +34,11 @@ if (!emprestado) {
     System.out.println("Livro " + livro + " já está emprestado.");
        }
 }
-
-
 public void devolver() {
    if (emprestado) { 
        emprestado = false;
-       System.out.println("Livro " + livro + " devolvido.");
-       
+       dataDevolucao = LocalDate.now();
+       System.out.println("Livro " + livro + " devolvido em " + dataDevolucao + ".");
    } else {
        System.out.println("Livro " + livro + " não estava emprestado.");
    }
@@ -54,7 +52,14 @@ public boolean isEmprestado() {
 public String getlivro() {
     return livro;
     }
-
+//Método para obter a data de empréstimo
+public LocalDate getDataEmprestimo() {
+return dataEmprestimo;
+}
+//Método para obter a data de devolução 
+public LocalDate getDataDevolucao() {
+    return dataDevolucao;
+}
 
 }
     
