@@ -28,9 +28,24 @@ public class AppEmprestimo {
             
              // testar supostos casos.
              switch (opcao) {
-                 case 1: 
-                    
-        }
+                 case 1:
+                     emprestimo1.emprestar();
+                     break;
+                 case 2:
+                     emprestimo1.devolver();
+                     break;
+                 case 3: 
+                     emprestimo2.emprestar();
+                     break;
+                 case 4:
+                     emprestimo2.devolver();
+                     break;
+                 case 0:
+                     System.out.println("Saindo...");
+                 default:
+                     System.out.println("Opção inválida"); 
+             }       
+        } while (opcao!=0);
             
           
     }
