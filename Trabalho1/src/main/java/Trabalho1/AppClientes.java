@@ -18,11 +18,18 @@ public class AppClientes {
                     System.out.println("[=============================]");
 
         }
-
-        
-        public static void main(String[] args) {
+            public static void main(String[] args) {
             Scanner scan = new Scanner(System.in);
             
+            int numeroClientes = 0;
+
+
+
+            Clientes[] clientes = new Clientes[5]; 
+            
+
+
+
             //acesso ao menu
             menu();
             System.out.println("Escolha a opção desejada: ");
@@ -33,16 +40,20 @@ public class AppClientes {
                 switch(opc){
                     
                     case 1: 
-                    
-                    
-                    
+                        for (int i = 0; i < clientes.length; i++ ) {
+                            
+                        
+                        
+                        
+                        
+                        }
                     
                 }
                 
             }
             
 
-            //Protótipo da estrutura de seleção por parte da escolha numérica do usuário
+
 
         }
 
