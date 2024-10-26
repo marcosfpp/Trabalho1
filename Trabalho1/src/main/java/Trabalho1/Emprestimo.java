@@ -74,17 +74,18 @@ class Cliente {
     }
 
     // Método para adicionar um novo empréstimo, se o cliente não possui outro ativo
-    public void adicionarEmprestimo(Emprestimo emprestimo) {
-        if (!temEmprestimoAtivo()) {
-            emprestimos.add(emprestimo);
-            emprestimo.emprestar();
+    public void adicionarEmprestimo(String livro) {
+        if (!temEmprestimoAtivoParaLivro(livro)) {
+            Emprestimo novoEmprestimo = new Emprestimo(livro, this);
+            emprestimos.add(novoEmprestimo);
+            novoEmprestimo.emprestar();
         } else {
-            System.out.println("Cliente '" + nome + "' já possui um empréstimo ativo.");
+            System.out.println("Cliente '" + nome + "' já possui o livro " + livro + " emprestado.");
         }
     }
 
     // Método para verificar se há algum empréstimo ativo
-    public boolean temEmprestimoAtivo() {
+    public boolean temEmprestimoAtivoParaLivro(String livro) {
         for (Emprestimo emprestimo : emprestimos) {
             if (emprestimo.isEmprestado()) {
                 return true;
