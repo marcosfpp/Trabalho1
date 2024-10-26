@@ -47,6 +47,7 @@ public class AppEmprestimo {
              }       
         } while (opcao!=0);
             
+        scanner.close();
           
     }
 }
