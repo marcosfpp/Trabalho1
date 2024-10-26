@@ -32,7 +32,7 @@ public void emprestar(LocalDate data) {
 if (!emprestado) {
     emprestado = true;
     dataEmprestimo = data;
-    System.out.println("Livro " + livro + " emprestado em " + dataEmprestimo + ".");
+    System.out.println("Livro " + livro + " emprestado a  " + cliente.getNome() + "em " + dataEmprestimo + ".");
 } else {
     System.out.println("Livro " + livro + " já está emprestado.");
        }
@@ -41,7 +41,7 @@ public void devolver() {
    if (emprestado) { 
        emprestado = false;
        dataDevolucao = LocalDate.now();
-       System.out.println("Livro " + livro + " devolvido em " + dataDevolucao + ".");
+       System.out.println("Livro " + livro + " devolvido em " + dataDevolucao + " pelo cliente " + cliente.getNome() + ".");
    } else {
        System.out.println("Livro " + livro + " não estava emprestado.");
    }
@@ -73,7 +73,7 @@ class Cliente {
         this.emprestimos = new ArrayList<>();
     }
 
-    // Método para adicionar um novo empréstimo
+    // Método para adicionar um novo empréstimo, se o cliente não possui outro ativo
     public void adicionarEmprestimo(Emprestimo emprestimo) {
         if (!temEmprestimoAtivo()) {
             emprestimos.add(emprestimo);
