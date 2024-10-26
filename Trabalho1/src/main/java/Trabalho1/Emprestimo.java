@@ -1,7 +1,8 @@
 package Trabalho1;
 
 import java.time.LocalDate;
-
+import java.util.ArrayList;
+import java.util.List;
 
 public class Emprestimo {
 private String livro;
@@ -61,7 +62,48 @@ public LocalDate getDataDevolucao() {
     return dataDevolucao;
 }
 
-}
-    
+class Cliente {
+    private String nome;
+    private List<Emprestimo> emprestimos;
 
+    public Cliente(String nome) {
+        this.nome = nome;
+        this.emprestimos = new ArrayList<>();
+    }
+
+    // Método para adicionar um novo empréstimo
+    public void adicionarEmprestimo(Emprestimo emprestimo) {
+        if (!temEmprestimoAtivo()) {
+            emprestimos.add(emprestimo);
+            emprestimo.emprestar();
+        } else {
+            System.out.println("Cliente '" + nome + "' já possui um empréstimo ativo.");
+        }
+    }
+
+    // Método para verificar se há algum empréstimo ativo
+    public boolean temEmprestimoAtivo() {
+        for (Emprestimo emprestimo : emprestimos) {
+            if (emprestimo.isEmprestado()) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    // Método para devolver um livro específico
+    public void devolverLivro(String tituloLivro) {
+        for (Emprestimo emprestimo : emprestimos) {
+            if (emprestimo.getLivro().equalsIgnoreCase(tituloLivro) && emprestimo.isEmprestado()) {
+                emprestimo.devolver();
+                return;
+            }
+        }
+        System.out.println("Livro '" + tituloLivro + "' não encontrado ou já devolvido.");
+    }
+
+    public String getNome() {
+        return nome;
+    }
+}
         
