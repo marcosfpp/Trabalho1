@@ -1,8 +1,13 @@
 package Trabalho1;
 
+import java.time.LocalDate;
+
+
 public class Emprestimo {
 private String livro;
 private boolean emprestado;
+private LocalDate dataEmprestimo;
+private LocalDate dataDevolucao;
 
 public Emprestimo(String livro) {
  this.livro = livro;
@@ -13,11 +18,17 @@ public Emprestimo(String livro) {
 public void emprestar() {
    if (!emprestado) { 
       emprestado = true;
-       System.out.println("Livro " + " emprestado.");
+      dataEmprestimo = LocalDate.now();
+       System.out.println("Livro " + livro + " emprestado em " + dataEmprestimo + ".");
    } else {
        System.out.println("Livro " + livro + " já está emprestado."); 
    }
 }
+
+public void emprestar
+
+
+
 public void devolver() {
    if (emprestado) { 
        emprestado = false;
