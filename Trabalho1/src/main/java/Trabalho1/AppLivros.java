@@ -14,10 +14,13 @@ public class AppLivros {
                 System.out.println("Digite o opção desejada: ");
                 opcaoMenu = scan.nextInt();
                 scan.nextLine();
-                System.out.println("\n\n");
                 
                 switch(opcaoMenu){
                     case 1:
+                        for (int i = 0; i < 50; i++){
+                            System.out.println("\n");
+                        }
+                        
                         for(int i = 0; i < livros.length; i++){                            
                             System.out.println("Digite o título do livro: ");
                             String nome = scan.nextLine();
@@ -42,18 +45,22 @@ public class AppLivros {
                             
                             System.out.println("\n\n");
                         }
+                        for (int i = 0; i < 50; i++){
+                            System.out.println("\n");
+                        }
                         break;
                     
                     case 2:
                         for (int i = 0; i < livros.length; i++){
-                            System.out.println(livros[i].getMostrarDadosStrings() + livros[i].getMostrarPublicacao() +"\n" + livros[i].getMostrarExemplares());
-                        }
-                        break;
-                        
+                            System.out.println(livros[i].getMostrarDadosStrings() +"\n" + livros[i].getMostrarPublicacao() +"\n" + livros[i].getMostrarExemplares());
+                        }     
                     case 3:
                         System.out.println("Obrigado por usar nosso sistema!");
                        break;
                 }
+        for (int i = 0; i < 50; i++){
+            System.out.println("\n");
+        }
         } while(opcaoMenu != 3);
     }
             
