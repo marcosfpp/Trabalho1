@@ -9,10 +9,12 @@ private String livro;
 private boolean emprestado;
 private LocalDate dataEmprestimo;
 private LocalDate dataDevolucao;
+private Cliente cliente; // Associando o cliente ao empréstimo
 
-public Emprestimo(String livro) {
+public Emprestimo(String livro, Cliente cliente) {
  this.livro = livro;
  this.emprestado = false;
+ this.cliente = cliente;
 
 }
  // Método para emprestar sem data específica (assume a data de hoje)
@@ -20,7 +22,7 @@ public void emprestar() {
    if (!emprestado) { 
       emprestado = true;
       dataEmprestimo = LocalDate.now();
-       System.out.println("Livro " + livro + " emprestado em " + dataEmprestimo + ".");
+       System.out.println("Livro " + livro + " emprestado a  " + cliente.getNome() + " em " + dataEmprestimo + ".");
    } else {
        System.out.println("Livro " + livro + " já está emprestado."); 
    }
@@ -94,7 +96,7 @@ class Cliente {
     // Método para devolver um livro específico
     public void devolverLivro(String tituloLivro) {
         for (Emprestimo emprestimo : emprestimos) {
-            if (emprestimo.getLivro().equalsIgnoreCase(tituloLivro) && emprestimo.isEmprestado()) {
+            if (emprestimo.getlivro().equalsIgnoreCase(tituloLivro) && emprestimo.isEmprestado()) {
                 emprestimo.devolver();
                 return;
             }
@@ -105,5 +107,7 @@ class Cliente {
     public String getNome() {
         return nome;
     }
+    
+        }
+
 }
-        
