@@ -8,7 +8,7 @@ public class AppLivros {
         Scanner scan = new Scanner(System.in);
         int opcaoMenu = 0 ;
         
-        do {
+        while (opcaoMenu != 3){
                 System.out.println("Biblioteca dos DEV's");
                 System.out.println("1 - Cadastro de livros \n2 - Mostrar livros \n3 - Sair ");
                 System.out.println("Digite o opção desejada: ");
@@ -20,7 +20,7 @@ public class AppLivros {
                         for (int i = 0; i < 50; i++){
                             System.out.println("\n");
                         }
-                        
+         
                         for(int i = 0; i < livros.length; i++){                            
                             System.out.println("Digite o título do livro: ");
                             String nome = scan.nextLine();
@@ -52,16 +52,19 @@ public class AppLivros {
                     
                     case 2:
                         for (int i = 0; i < livros.length; i++){
-                            System.out.println(livros[i].getMostrarDadosStrings() +"\n" + livros[i].getMostrarPublicacao() +"\n" + livros[i].getMostrarExemplares());
+                            System.out.println("\n"+ livros[i].getMostrarDadosStrings() +"\n" + livros[i].getMostrarPublicacao() +"\n" + livros[i].getMostrarExemplares());
                         }     
                     case 3:
                         System.out.println("Obrigado por usar nosso sistema!");
                        break;
+                    default: 
+                        System.out.println("Digite uma opção válida! ");
+                        break; 
                 }
         for (int i = 0; i < 50; i++){
             System.out.println("\n");
         }
-        } while(opcaoMenu != 3);
+        } 
     }
             
 }
