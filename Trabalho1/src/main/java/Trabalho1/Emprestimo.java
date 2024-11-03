@@ -38,4 +38,11 @@ public String getDataEmprestimo() {
     return this.dataEmprestimo;
 }
 
+public String getDataDevolucao() {
+    return this.dataDevolucao;
+}
 
+public boolean isEmprestimoAtivo() {
+    return this.emprestimoAtivo;
+}
+//setters 
