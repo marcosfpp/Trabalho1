@@ -69,3 +69,12 @@ public void devolverLivro() {
     this.usuario.diminuirEmprestimos(1);
     this.finalizarEmprestimo();
 }
+//Representação textual do empréstimo
+@Override 
+public String toString() {
+    return "Usuário: " + this.usuario.getNome() + "\n" +
+               "ID do Usuário: " + this.usuario.getId() + "\n" +
+               "Livro: " + this.livro.getTitulo() + "\n" +
+               "ID do Livro: " + this.livro.getCodigo();
+    }
+}
