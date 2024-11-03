@@ -56,3 +56,16 @@ public void finalizarEmprestimo() {
     this.emprestimoAtivo = false;
 }
 //Métodos de empréstimo
+public void realizarEmprestimo() {
+    this.livro.emprestarExemplares(1);
+}
+
+public void verificarDisponibilidade() {
+    this.livro.verificarDisponibilidade();
+}
+
+public void devolverLivro() {
+    this.livro.aumentarLivros(1);
+    this.usuario.diminuirEmprestimos(1);
+    this.finalizarEmprestimo();
+}
