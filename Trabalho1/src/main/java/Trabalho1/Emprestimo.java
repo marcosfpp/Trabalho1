@@ -2,14 +2,14 @@ package Trabalho1;
 
 public class Emprestimo {
     
-private BibliUsuario usuario;
-private BibliLivro livro;
+private Clientes usuario;
+private Livros livro;
 private String dataEmprestimo;
 private String dataDevolucao;
 private boolean emprestimoAtivo;
 
 //Construtor principal para empréstimos ativos
-public Emprestimo(BibliLivro livro, String dataEmprestimo, BibliUsuario usuario) {
+public Emprestimo(Livros livro, String dataEmprestimo, Clientes usuario) {
     this.usuario = usuario;
     this.livro = livro;
     this.dataEmprestimo = dataEmprestimo;
@@ -18,7 +18,7 @@ public Emprestimo(BibliLivro livro, String dataEmprestimo, BibliUsuario usuario)
 }
 
 //Construtor secundário para empr[estimos inativos ou apenas para consultar
-public Emprestimo(BibliLivro livro, String dataEmprestimo, String dataDevolucao) {
+public Emprestimo(Livros livro, String dataEmprestimo, String dataDevolucao) {
     this.livro = livro;
     this.dataEmprestimo = dataEmprestimo;
     this.dataDevolucao = dataDevolucao;
@@ -26,11 +26,11 @@ public Emprestimo(BibliLivro livro, String dataEmprestimo, String dataDevolucao)
 }
 
 //Getters
-public BibliLivro getLivro() {
+public Livros getLivro() {
     return this.livro;
 }
 
-public BibliUsuario getUsuario() {
+public Clientes getUsuario() {
     return this.usuario;
 }
 
