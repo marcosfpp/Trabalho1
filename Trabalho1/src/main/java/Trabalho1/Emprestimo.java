@@ -52,3 +52,7 @@ public void setDataEmprestimo(String dataEmprestimo) {
 public void setDataDevolucao(String dataDevolucao) {
     this.dataDevolucao = dataDevolucao;
 }
+public void finalizarEmprestimo() {
+    this.emprestimoAtivo = false;
+}
+//Métodos de empréstimo
