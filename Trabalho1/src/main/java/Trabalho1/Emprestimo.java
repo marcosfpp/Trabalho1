@@ -46,3 +46,9 @@ public boolean isEmprestimoAtivo() {
     return this.emprestimoAtivo;
 }
 //setters 
+public void setDataEmprestimo(String dataEmprestimo) {
+    this.dataEmprestimo = dataEmprestimo;
+}
+public void setDataDevolucao(String dataDevolucao) {
+    this.dataDevolucao = dataDevolucao;
+}
