@@ -21,6 +21,7 @@ public class AppClientes {
     public static void main(String[] args) {
         Scanner scan = new Scanner(System.in);
 
+        boolean usuarioExistente;
         int numeroClientes = 0;
         int vagasClientes = 0;
         int quantidade = 0;
@@ -37,6 +38,7 @@ public class AppClientes {
             switch (opc) {
 
                 case 2:
+                    try{
                     numeroClientes = 0;
                     for (int i = 0; i < clientes.length; i++) {
                         if (clientes[i] != null) {
@@ -70,14 +72,26 @@ public class AppClientes {
                                     clientes[i] = new Clientes(nomeUsuario, emailUsuario, idUsuario, contatoUsuario);
                                     System.out.println("O usuário " + clientes[i].getNome() + "foi cadastrado!\n");
                                     scan.nextLine();
-
                                 }
-                                break;
+                                    }
 
-                            }
-
+                        }catch(Exception e){System.out.println("Erro ao cadastrar cliente!");
+                        scan.nextLine();}
                     
-
+                    break;
+                    
+                case 4:
+                    // tentativa de uma listagem simples e eficaz
+                     for (int i = 0; i < clientes.length; i++) {
+                         System.out.println("\n" + clientes[i].toString() + "\n" + clientes[i].getEmail() + "\n" + clientes[i].getTelefone());
+                        
+                    }
+                    
+                case 5:
+                    System.out.println("Obrigado por usar nosso sistemas!");
+                default:
+                    System.out.println("Digite uma opção válida!");
+            
             }
 
         }

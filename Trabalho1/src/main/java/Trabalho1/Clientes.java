@@ -6,6 +6,7 @@ public class Clientes {
     private String email;
     private String telefone;
     private String numeroID;
+    private int qtd_Emprestada;
  
 
     
@@ -18,13 +19,17 @@ public class Clientes {
         
 
         //Criação de gets e listagens
-        public String getNome() {
-            return this.nome;
+
+        public String getEmail() {
+            return this.email;
         }
 
-        public String getID() {
-            return this.numeroID;
+        public String getTelefone() {
+            return this.telefone;
         }
+
+        
+        
 
         //Método para listagem
         @Override
