@@ -13,7 +13,7 @@ public class Livros {
        this.numeroExemplares = numeroExemplares;
     }
     
-    public boolean verficarDisponibidade(){
+    public boolean verficar(){
         if (this.numeroExemplares != 0){
             return true;
         }else {
