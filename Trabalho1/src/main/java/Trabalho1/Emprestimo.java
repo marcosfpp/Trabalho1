@@ -69,6 +69,8 @@ public void devolverLivro() {
     this.usuario.diminuirEmprestimos(1);
     this.finalizarEmprestimo();
 }
+//Métodos de devolução
+public void 
 //Representação textual do empréstimo
 @Override 
 public String toString() {
