@@ -26,6 +26,8 @@ public class App{
         int quantidade = 0;
         String nomeUsuario, emailUsuario, contatoUsuario, idUsuario;
         
+        
+        
         Clientes[] clientes = new Clientes[5];
         Emprestimo[] emprestimo = new Emprestimo[5];
         Livros[] livros = new Livros[5];
@@ -119,7 +121,15 @@ public class App{
                         opc_sec = scan.nextLine();
                         if ("S".equals(opc_sec) || "s".equals(opc_sec) || "Sim".equals(opc_sec) || "sim".equals(opc_sec)) {
                             try {
+                                System.out.println("Digite seu id de cliente:");
+                                idUsuario = scan.nextLine();
+                                scan.nextLine();
                                 
+                                    for (int i = 0; i < clientes.length; i++) {
+                                        //Fazer uma validação de usuário quando puder
+                                        if(usuario[i].)
+                                    
+                                }
                             }catch (Exception e) {
                                 System.out.println("Mensagem de erro");
                             }
