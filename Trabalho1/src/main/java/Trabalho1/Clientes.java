@@ -5,12 +5,12 @@ public class Clientes {
     private String nome;
     private String email;
     private String telefone;
-    private int numeroID;
+    private String numeroID;
  
 
     
         //Criação do Construtor
-        Clientes(String nome, String email, int numeroID, String telefone){
+        Clientes(String nome, String email, String numeroID, String telefone){
             this.nome = nome;
             this.email = email;
             this.numeroID = numeroID;
@@ -22,7 +22,7 @@ public class Clientes {
             return this.nome;
         }
 
-        public int getID() {
+        public String getID() {
             return this.numeroID;
         }
 
