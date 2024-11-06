@@ -6,7 +6,7 @@ private Clientes usuario;
 private Livros livro;
 private String dataEmprestimo;
 private String dataDevolucao;
-private boolean emprestimoAtivo;
+private boolean emprestimoAtivo = false;
 
 //Construtor principal para empréstimos ativos
 public Emprestimo(Livros livro, String dataEmprestimo, Clientes usuario) {
@@ -73,7 +73,7 @@ public void devolverLivro() {
 @Override 
 public String toString() {
     return "Usuário: " + this.usuario.getNome() + "\n" +
-               "ID do Usuário: " + this.usuario.getId() + "\n" +
+               "ID do Usuário: " + this.usuario.getID() + "\n" +
                "Livro: " + this.livro.getTitulo() + "\n" +
                "ID do Livro: " + this.livro.getCodigo();
     }
