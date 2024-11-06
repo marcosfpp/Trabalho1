@@ -21,11 +21,11 @@ public class AppClientes {
     public static void main(String[] args) {
         Scanner scan = new Scanner(System.in);
 
+        boolean usuarioExistente;
         int numeroClientes = 0;
         int vagasClientes = 0;
         int quantidade = 0;
-        int idUsuario = 0;
-        String nomeUsuario, emailUsuario, contatoUsuario;
+        String nomeUsuario, emailUsuario, contatoUsuario, idUsuario;
 
         Clientes[] clientes = new Clientes[5];
 
@@ -37,48 +37,61 @@ public class AppClientes {
         while (opc != 5) {
             switch (opc) {
 
-                case 1:
+                case 2:
+                    try{
                     numeroClientes = 0;
                     for (int i = 0; i < clientes.length; i++) {
                         if (clientes[i] != null) {
                             numeroClientes++;
 
                         }
-
-                        vagasClientes = clientes.length - numeroClientes; //Ter ideia de vagas preenchidas
-                        System.out.println("Existem " + vagasClientes + " vagas disponíveis para cadastro.");
-                        scan.nextLine();
-
-                        System.out.println("Quantos usuários deseja cadastrar?");
-                        quantidade = scan.nextInt();
-
-                        if (quantidade > vagasClientes) {
-
-                            System.out.println("Não temos vagas suficientes para esse cadastro.");
-
-                        } else {
-                            for (int i = numeroClientes; i < (numeroClientes + quantidade); i++) {
-                                scan.nextLine();
-                                System.out.println("Digite o nome do usuário:");
-                                nomeUsuario = scan.nextLine();
-                                System.out.println("Digite o e-mail do usuário:");
-                                emailUsuario = scan.nextLine();
-                                System.out.println("Digite o número para contato");
-                                contatoUsuario = scan.nextLine();
-                                System.out.println("Digite o número o CPF para identificação:");
-                                idUsuario = scan.nextInt();
-
-                                clientes[i] = new Clientes(nomeUsuario, emailUsuario, contatoUsuario, idUsuario);
-                                System.out.println("O usuário " + clientes[i].getNome() + "foi cadastrado!\n");
-                                scan.nextLine();
-
-                            }
-                            break;
-
-                        }
-
                     }
+                            vagasClientes = clientes.length - numeroClientes; //Ter ideia de vagas preenchidas
+                            System.out.println("Existem " + vagasClientes + " vagas disponíveis para cadastro.");
+                            scan.nextLine();
 
+                            System.out.println("Quantos usuários deseja cadastrar?");
+                            quantidade = scan.nextInt();
+
+                            if (quantidade > vagasClientes) {
+
+                                System.out.println("Não temos vagas suficientes para esse cadastro.");
+
+                            } else {
+                                for (int i = numeroClientes; i < (numeroClientes + quantidade); i++) {
+                                    scan.nextLine();
+                                    System.out.println("Digite o nome do usuário:");
+                                    nomeUsuario = scan.nextLine();
+                                    System.out.println("Digite o e-mail do usuário:");
+                                    emailUsuario = scan.nextLine();
+                                    System.out.println("Digite o número para contato");
+                                    contatoUsuario = scan.nextLine();
+                                    System.out.println("Digite o número o CPF para identificação:");
+                                    idUsuario = scan.nextLine();
+
+                                    clientes[i] = new Clientes(nomeUsuario, emailUsuario, idUsuario, contatoUsuario);
+                                    System.out.println("O usuário " + clientes[i].getNome() + "foi cadastrado!\n");
+                                    scan.nextLine();
+                                }
+                                    }
+
+                        }catch(Exception e){System.out.println("Erro ao cadastrar cliente!");
+                        scan.nextLine();}
+                    
+                    break;
+                    
+                case 4:
+                    // tentativa de uma listagem simples e eficaz
+                     for (int i = 0; i < clientes.length; i++) {
+                         System.out.println("\n" + clientes[i].toString() + "\n" + clientes[i].getEmail() + "\n" + clientes[i].getTelefone());
+                        
+                    }
+                    
+                case 5:
+                    System.out.println("Obrigado por usar nosso sistemas!");
+                default:
+                    System.out.println("Digite uma opção válida!");
+            
             }
 
         }
