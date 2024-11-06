@@ -19,6 +19,17 @@ public class App{
     // Inicialização do código principal.
     public static void main(String[] args) {
         Scanner scan = new Scanner(System.in);
+        
+        boolean usuarioExistente;
+        int numeroClientes = 0;
+        int vagasClientes = 0;
+        int quantidade = 0;
+        String nomeUsuario, emailUsuario, contatoUsuario, idUsuario;
+        
+        Clientes[] clientes = new Clientes[5];
+        Emprestimo[] emprestimo = new Emprestimo[5];
+        Livros[] livros = new Livros[5];
+        
         System.out.println("Bem vindo a biblioteca :)");
 
         // Opção que permiti o usuário conferir se ele quer utilizar o programa ou não.
@@ -38,6 +49,7 @@ public class App{
                         opc_sec = scan.nextLine();
                         if ("S".equals(opc_sec) || "s".equals(opc_sec) || "Sim".equals(opc_sec) || "sim".equals(opc_sec)) {
                             try {
+                                
                             } catch (Exception e) {
                                 System.out.println("Mensagem de erro");
                             }
@@ -49,9 +61,44 @@ public class App{
                         opc_sec = scan.nextLine();
                         if ("S".equals(opc_sec) || "s".equals(opc_sec) || "Sim".equals(opc_sec) || "sim".equals(opc_sec)) {
                             try {
-                            }catch (Exception e) {
-                                System.out.println("Mensagem de erro");
-                            }
+                                for (int i = 0; i < clientes.length; i++) {
+                        if (clientes[i] != null) {
+                            numeroClientes++;
+
+                        }
+                    }
+                            vagasClientes = clientes.length - numeroClientes; //Ter ideia de vagas preenchidas
+                            System.out.println("Existem " + vagasClientes + " vagas disponíveis para cadastro.");
+                            scan.nextLine();
+
+                            System.out.println("Quantos usuários deseja cadastrar?");
+                            quantidade = scan.nextInt();
+
+                            if (quantidade > vagasClientes) {
+
+                                System.out.println("Não temos vagas suficientes para esse cadastro.");
+
+                            } else {
+                                for (int i = numeroClientes; i < (numeroClientes + quantidade); i++) {
+                                    scan.nextLine();
+                                    System.out.println("Digite o nome do usuário:");
+                                    nomeUsuario = scan.nextLine();
+                                    System.out.println("Digite o e-mail do usuário:");
+                                    emailUsuario = scan.nextLine();
+                                    System.out.println("Digite o número para contato");
+                                    contatoUsuario = scan.nextLine();
+                                    System.out.println("Digite o número o CPF para identificação:");
+                                    idUsuario = scan.nextLine();
+
+                                    clientes[i] = new Clientes(nomeUsuario, emailUsuario, idUsuario, contatoUsuario);
+                                    System.out.println("O usuário " + clientes[i].getNome() + "foi cadastrado!\n");
+                                    scan.nextLine();
+                                }
+                                    }
+
+                        }catch(Exception e){System.out.println("Erro ao cadastrar cliente!");
+                        scan.nextLine();}
+                        
                         }
                         break;
 
@@ -60,6 +107,7 @@ public class App{
                         opc_sec = scan.nextLine();
                         if ("S".equals(opc_sec) || "s".equals(opc_sec) || "Sim".equals(opc_sec) || "sim".equals(opc_sec)) {
                             try {
+                                
                             }catch (Exception e) {
                                 System.out.println("Mensagem de erro");
                             }
@@ -71,6 +119,7 @@ public class App{
                         opc_sec = scan.nextLine();
                         if ("S".equals(opc_sec) || "s".equals(opc_sec) || "Sim".equals(opc_sec) || "sim".equals(opc_sec)) {
                             try {
+                                
                             }catch (Exception e) {
                                 System.out.println("Mensagem de erro");
                             }
@@ -82,6 +131,7 @@ public class App{
                         opc_sec = scan.nextLine();
                         if ("S".equals(opc_sec) || "s".equals(opc_sec) || "Sim".equals(opc_sec) || "sim".equals(opc_sec)) {
                             try {
+                                
                             }catch (Exception e) {
                                 System.out.println("Mensagem de erro");
                             }
@@ -93,6 +143,7 @@ public class App{
                         opc_sec = scan.nextLine();
                         if ("S".equals(opc_sec) || "s".equals(opc_sec) || "Sim".equals(opc_sec) || "sim".equals(opc_sec)) {
                             try {
+                                
                             }catch (Exception e) {
                                 System.out.println("Mensagem de erro");
                             }
@@ -104,6 +155,7 @@ public class App{
                         opc_sec = scan.nextLine();
                         if ("S".equals(opc_sec) || "s".equals(opc_sec) || "Sim".equals(opc_sec) || "sim".equals(opc_sec)) {
                             try {
+                                
                             }catch (Exception e) {
                                 System.out.println("Mensagem de erro");
                             }

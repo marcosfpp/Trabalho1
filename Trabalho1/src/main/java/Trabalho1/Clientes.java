@@ -27,6 +27,10 @@ public class Clientes {
         public String getTelefone() {
             return this.telefone;
         }
+        
+        public String getNome() {
+            return this.nome;
+        }
 
         
         
