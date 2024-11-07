@@ -75,7 +75,7 @@ public String toString() {
     return "Usuário: " + this.cliente.getNome() + "\n" +
 
                "ID do Usuário: " + this.cliente.getId() + "\n" +
-               "Livro: " + this.livro.getTitulo() + "\n" +
+               "Livro: " + this.livro.getMostrarNome() + "\n" +
                "ID do Livro: " + this.livro.getCodigo();
                "ID do Usuário: " + this.cliente.getId() + "\n" +
                "Codigo livro: " + this.livro.getMostrarIdLivro() +
