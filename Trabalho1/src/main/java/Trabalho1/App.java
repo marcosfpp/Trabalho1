@@ -34,11 +34,11 @@ public class App {
                     System.out.println("[CADASTRO USUÁRIO]\n");
                     break;
                 case 3:
-                     try {
+                     
                         // Contador de empréstimos 
                         int qtdEmprestimos = 0;
                         
-                    }
+                    
                         // Entrada de usuário
                         String escolha;
                         int idUsu;
@@ -50,7 +50,7 @@ public class App {
                         Livros[] livros = new Livros[100];       // Array de livros
                         Emprestimo[] emprestimos = new Emprestimo[100]; //Array de empréstimos 
                         
-                    }
+                    
                       boolean ClienteEncontrado = false;
                       boolean livroEncontrado = false;
                       boolean livroJaEmprestado = false;
@@ -64,23 +64,34 @@ public class App {
                         escolha = scan.next().trim().toLowerCase();
                         scan.nextLine();
                         
-                        while (escolha.equals("sim"))
+                        while (escolha.equals("sim") || escolha.equals("s")){
+                            System.out.println("Digite seu ID de cliente: ");
+                            idUsu = scan.nextInt();
+                            scan.nextLine();
                         
-                        
-                        for (Clientes clientes : Clientes) {
-                            if (clientes != null && clientes.getId() == idUsu)
-                                possuiEmprestimoMaximo = clientes.getQuantidadeEmprs() >= 3;
+                        // busca pelo cliente no array de clientes
+                        for (Clientes cliente : clientes) {
+                            if (clientes != null && clientes.getId() == idUsu) {
+                                clienteEncontrado = true;
+                                possuiEmprestimoMaximo = cliente.getQuantidadeEmprs() >= 3;
                                 break;
                             }
                         }
-                            if (!usuarioEncontrado) {
-                                System.out.println("Usuário não cadastrado!");
+                            if (!clienteEncontrado) {
+                                System.out.println("Cliente não cadastrado!");
                             } else if (possuiEmprestimoMaximo) {
                                 System.out.println("Este usuário já possui 3 empréstimos ativos. Devolva pelo menos 1 livro antes de pegar outro.");
                             } else {
                                 System.out.println("Informe o código do livro que deseja pegar emprestado: ");
                                 codigo_e = scan.nextInt();
                                 scan.nextLine();
+                                
+                                // (A lógica de empréstimo do livro seguiria daqui)
+                            }
+                            System.out.println("Deseja realizar outro empréstimo? (s/n): ");
+                            escolha = scan.nextLine().trim().toLowerCase();
+                        }
+                        
                                 
                     break;
         }
