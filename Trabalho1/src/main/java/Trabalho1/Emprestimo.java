@@ -72,14 +72,10 @@ public void devolverLivro() {
 //Representação textual do empréstimo
 @Override 
 public String toString() {
-    return "Usuário: " + this.cliente.getNome() + "\n" +
-
-               "ID do Usuário: " + this.cliente.getId() + "\n" +
-               "Livro: " + this.livro.getMostrarNome() + "\n" +
-               "ID do Livro: " + this.livro.getCodigo();
-               "ID do Usuário: " + this.cliente.getId() + "\n" +
-               "Codigo livro: " + this.livro.getMostrarIdLivro() +
-               "Livro: " + this.livro.getMostrarNome() + "\n";
-
+    return "Cliente: " + this.cliente.getNome() + "\n" +
+           "ID do Cliente: " + this.cliente.getId() + "\n" +
+           "Livro: " + this.livro.getMostrarNome() + "\n" +
+           "ID do Livro: " + this.livro.getMostrarIdLivro() + "\n" +
+           "Código do Livro: " + this.livro.getMostrarIdLivro() + "\n";
     }
 }
