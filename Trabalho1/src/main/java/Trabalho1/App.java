@@ -33,7 +33,11 @@ public class App{
         
         
         //Inserir os verificadores aqui
+        //Lógica de devolução
+        boolean v_codigousuario = false;
         boolean v_codigolivro = false;
+        boolean v_usu_livro = false;
+        //
      
         
         
@@ -126,7 +130,7 @@ public class App{
                             if (quantidade > vagasClientes) {
 
                                 System.out.println("Não temos vagas suficientes para esse cadastro.");
-
+                                
                             } else {
                                 for (int i = cadastClientes; i < (cadastClientes + quantidade); i++) {
                                     scan.nextLine();
@@ -263,25 +267,43 @@ public class App{
                                 idUsuario = scan.nextInt();
                                 scan.nextLine();
                                 
-                                    for (int i = 0; i < clientes.length; i++) {
-                                        //Fazer uma validação de usuário quando puder
-                                        if (clientes[i].getMostrarQuantidadeEmprestada() > 0) {
+                                for (int i = 0; i < clientes.length; i++) {
+                                    if (clientes[i] != null && clientes[i].getId() == idUsuario) {
+                                        v_codigousuario = true;
+                                        if (clientes[i].getMostrarQuantidadeEmprestada() > 0) {// mudar essa lógica aqui
+                                            v_usu_livro = true;
                                             for (int j = 0; j < emprestimo.length; j++) {
-                                                if (emprestimo[j] != null) { // Validação da existência do empréstimo                                                   System.out.println("");
-                                                    //Aqui dá para jogar outro if para o usuário válidar seus empréstimos(nome livro, data...)
-                                                
+                                                if (emprestimo[j] != null) { // Validação da existência do empréstimo  
+                                                    System.out.println("O usuario: " + clientes[j].getNome() + " está com o livro: " + livros[j].getMostrarNome());
+                                                    System.out.println(clientes[j].getNome() + " deseja devolver o livro acima? S ou N");
+                                                    opc_sec = scan.nextLine();
+                                                    if ("S".equals(opc_sec) || "s".equals(opc_sec) || "Sim".equals(opc_sec) || "sim".equals(opc_sec)) {
+                                                        for (int k = 0; emprestimo.length < 10; k++) {
+                                                            if (emprestimo[k] != null) {
+                                                                if (emprestimo[k].getCliente().getId() == idUsuario) {
+                                                                    if (emprestimo[k].getLivro().getMostrarIdLivro() == cod_livro) {
+                                                                        emprestimo[k].setDataEmprestimo(null);
+                                                                        emprestimo[k].verificarDisponibilidade();
+                                                                        emprestimo[k].finalizarEmprestimo();
+                                                                        emprestimo[k].getLivro().
+                                                                    }
+                                                                }
+                                                            }
+                                                        }
+                                                    }
                                                 }
                                             }
                                         }
+                                    }
                                     System.out.println("Digite o código do livro para a devolução:");
                                     cod_livro = scan.nextInt();
                                     for (int a = 0; a < livros.length; a++) {
                                             //Dá para jogar verificação de livro encontrado aqui, verificar com o pessoal
                                         if (livros[a] != null) {
-                                            if (livros[a].getMostrarIdLivro() == cod_livro) {//Criar get para puxar código livro
+                                            if (livros[a].getMostrarIdLivro()== cod_livro) {
                                                 for (int j = 0; j < emprestimo.length; j++) {
-                                                    if (emprestimo[j].getUsuario().getId()== idUsuario) {
-                                                        if (emprestimo[j].getLivro().getMostrarIdLivro() == cod_livro) { //Criar get puxar livro
+                                                    if (emprestimo[j].getCliente().getId()== idUsuario) {
+                                                        if (emprestimo[j].getLivro().getMostrarIdLivro() == cod_livro) {
                                                             v_codigolivro = true;
                                                             //Validar as verificaçãoes em boolean nesses finais de código, replicar para o código acima desse
                                                             break;
@@ -291,7 +313,7 @@ public class App{
                                             }if (v_codigolivro) {
                                                 for (int j = 0; j < emprestimo.length; j++) {
                                                     if (emprestimo[j] != null) {
-                                                        if (emprestimo[j].getUsuario().getId() == idUsuario) {
+                                                        if (emprestimo[j].getCliente().getId() == idUsuario) {
                                                             if (emprestimo[j].getLivro().getMostrarIdLivro() == cod_livro) {
                                                                 emprestimo[j].getLivro().setDevolverLivros(1);
                                                                 emprestimo[j].setDataEmprestimo(null);
