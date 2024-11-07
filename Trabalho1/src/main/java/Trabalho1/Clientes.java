@@ -5,13 +5,13 @@ public class Clientes {
     private String nome;
     private String email;
     private String telefone;
-    private String numeroID;
+    private int numeroID;
     private int qtd_Emprestada;
  
 
     
         //Criação do Construtor
-        Clientes(String nome, String email, String numeroID, String telefone){
+        Clientes(String nome, String email, int numeroID, String telefone){
             this.nome = nome;
             this.email = email;
             this.numeroID = numeroID;
@@ -46,7 +46,7 @@ public class Clientes {
         public String getNome() {
             return this.nome;
         }
-        public String getId() {
+        public int getId() {
             return this.numeroID;
         }
 
@@ -56,7 +56,10 @@ public class Clientes {
         //Método para listagem
         @Override
         public String toString (){
-            return "Nome:" + this.nome + " com o ID: " + this.numeroID;
+            return "Nome:" + this.nome +"\n" +
+                    " com o ID: " + this.numeroID + "\n" +
+                    "E-mail :" + this.email + "\n" +
+                    "e com o contato: " + this.telefone;
         }
 
         

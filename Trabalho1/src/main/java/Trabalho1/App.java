@@ -20,11 +20,15 @@ public class App{
     public static void main(String[] args) {
         Scanner scan = new Scanner(System.in);
         
-        boolean usuarioExistente;
-        int numeroClientes = 0;
-        int vagasClientes = 0;
-        int quantidade = 0;
-        String nomeUsuario, emailUsuario, contatoUsuario, idUsuario;
+        boolean usuarioExistente, livroExistente;//variaveis para listagem
+        int cadastClientes = 0; // quantidade de usuarios a serem cadastrados
+        int cadastLivros = 0; // quantidade de livros a serem cadastrados
+        int vagasClientes = 0; //auxiliar para verificação de espaço no array
+        int quantidade = 0; // quantidade de usuarios
+        int quantLivros = 0; // quantidade de livros
+        int sobraLivros = 0;
+        int idUsuario = 0;
+        String nomeUsuario, emailUsuario, contatoUsuario;
         int cod_livro;
         
         
@@ -52,29 +56,67 @@ public class App{
             while (opc_pri != 8) {
                 switch (opc_pri) {
                     case 1:
-                        System.out.println("Deseja cadastrar um usuário, digite S ou N");
+                        System.out.println("Deseja cadastrar um livro, digite S ou N");
                         opc_sec = scan.nextLine();
                         if ("S".equals(opc_sec) || "s".equals(opc_sec) || "Sim".equals(opc_sec) || "sim".equals(opc_sec)) {
-                            try {
                                 
-                            } catch (Exception e) {
-                                System.out.println("Mensagem de erro");
+                            for (int i = 0; i < livros.length; i++){
+                                if(livros[i] != null){
+                                    quantLivros++;
+                                }
                             }
+                            sobraLivros = livros.length - quantLivros;
+                            System.out.println("Ainda suportamos o cadastro de: " + sobraLivros + " livros");
+                            
+                            System.out.println("Deseja cadastrar quantos livros? ");
+                            cadastLivros = scan.nextInt();
+                            scan.nextLine();
+                            
+                            if (cadastLivros > sobraLivros) {
+
+                                System.out.println("Não temos vagas suficientes para esse cadastro.");
+
+                            } else {
+                                for (int i = cadastLivros; i < (cadastLivros + quantLivros); i++) {
+                                    System.out.println("Digite o título do livro: ");
+                                    String nomeLivro = scan.nextLine();
+                                    System.out.println("\n");
+
+                                    System.out.println("Digite o(s) autor(es) do livro: ");
+                                    String nomeAutor = scan.nextLine();
+                                    System.out.println("\n");
+
+                                    System.out.println("Digite o ano de publicação: ");
+                                    int anoPublicacao = scan.nextInt();
+                                    scan.nextLine();
+                                    System.out.println("\n");
+
+                                    System.out.println("Digite a quantidade de exemplares disponíveis: ");
+                                    int numeroExemplares = scan.nextInt();
+                                    scan.nextLine();
+                                    System.out.println("\n");
+                                    
+                                    int idLivro = (i = i + 1);
+                                    Livros informacoesLivro = new Livros(idLivro, nomeLivro, nomeAutor, anoPublicacao, numeroExemplares);
+                                    livros[quantLivros] = informacoesLivro;
+                                }
+                                    }
+                            
                         }
                         break;
 
                     case 2:
-                        System.out.println("Deseja cadastrar um livro, digite S ou N");
+                        System.out.println("Deseja cadastrar um usuário, digite S ou N");
                         opc_sec = scan.nextLine();
                         if ("S".equals(opc_sec) || "s".equals(opc_sec) || "Sim".equals(opc_sec) || "sim".equals(opc_sec)) {
                             try {
                                 for (int i = 0; i < clientes.length; i++) {
-                        if (clientes[i] != null) {
-                            numeroClientes++;
+                                    if (clientes[i] != null) {
+                                    cadastClientes++;
 
-                        }
-                    }
-                            vagasClientes = clientes.length - numeroClientes; //Ter ideia de vagas preenchidas
+                                 }
+                                }
+                            vagasClientes = clientes.length - cadastClientes; //Ter ideia de vagas preenchidas
                             System.out.println("Existem " + vagasClientes + " vagas disponíveis para cadastro.");
                             scan.nextLine();
 
@@ -86,7 +128,7 @@ public class App{
                                 System.out.println("Não temos vagas suficientes para esse cadastro.");
 
                             } else {
-                                for (int i = numeroClientes; i < (numeroClientes + quantidade); i++) {
+                                for (int i = cadastClientes; i < (cadastClientes + quantidade); i++) {
                                     scan.nextLine();
                                     System.out.println("Digite o nome do usuário:");
                                     nomeUsuario = scan.nextLine();
@@ -94,9 +136,7 @@ public class App{
                                     emailUsuario = scan.nextLine();
                                     System.out.println("Digite o número para contato");
                                     contatoUsuario = scan.nextLine();
-                                    System.out.println("Digite o número o CPF para identificação:");
-                                    idUsuario = scan.nextLine();
-
+                                    idUsuario = (i + 1);
                                     clientes[i] = new Clientes(nomeUsuario, emailUsuario, idUsuario, contatoUsuario);
                                     System.out.println("O usuário " + clientes[i].getNome() + "foi cadastrado!\n");
                                     scan.nextLine();
@@ -147,7 +187,7 @@ public class App{
                         // busca pelo cliente 
                         Clientes clienteSelecionado = null;
                         for (Clientes cliente : clientes) {
-                            if (cliente != null && cliente.getId().equals(idUsu)) {
+                            if (cliente != null && cliente.getId() == (idUsu)) {
                                 clienteSelecionado = cliente;
                                 clienteEncontrado = true;
                                 possuiMaisDe3Emprestimos = cliente.getMostrarQuantidadeEmprestada() >= 3;
@@ -222,7 +262,7 @@ public class App{
                         if ("S".equals(opc_sec) || "s".equals(opc_sec) || "Sim".equals(opc_sec) || "sim".equals(opc_sec)) {
                             try {
                                 System.out.println("Digite seu id de cliente:");
-                                idUsuario = scan.nextLine();
+                                idUsuario = scan.nextInt();
                                 scan.nextLine();
                                 
                                     for (int i = 0; i < clientes.length; i++) {
@@ -283,6 +323,8 @@ public class App{
                         break;
 
                     case 5:
+                        livroExistente = false;
+                        
                         System.out.println("Deseja listar todos os livros, digite S ou N");
                         opc_sec = scan.nextLine();
                         if ("S".equals(opc_sec) || "s".equals(opc_sec) || "Sim".equals(opc_sec) || "sim".equals(opc_sec)) {
@@ -295,10 +337,21 @@ public class App{
                         break;
 
                     case 6:
+                        quantidade = 0;
+                        usuarioExistente = false;
                         System.out.println("Deseja listar todos os usuários, digite S ou N");
                         opc_sec = scan.nextLine();
                         if ("S".equals(opc_sec) || "s".equals(opc_sec) || "Sim".equals(opc_sec) || "sim".equals(opc_sec)) {
                             try {
+                                for (Clientes cli : clientes){
+                                    if (cli != null) {
+                                        usuarioExistente = true;
+                                        System.out.println(clientes);
+                                        quantidade++;
+                                        
+                                    }
+                                }
+                              
                                 
                             }catch (Exception e) {
                                 System.out.println("Mensagem de erro");
@@ -332,5 +385,5 @@ public class App{
         }
     }
  }
-}
+
 
