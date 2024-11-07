@@ -17,7 +17,7 @@ public Emprestimo(Livros livro, String dataEmprestimo, Clientes usuario) {
     this.usuario.setQuantidadeEmprestimos(1);
 }
 
-//Construtor secundário para empr[estimos inativos ou apenas para consultar
+//Construtor secundário para empréstimos inativos ou apenas para consultar
 public Emprestimo(Livros livro, String dataEmprestimo, String dataDevolucao) {
     this.livro = livro;
     this.dataEmprestimo = dataEmprestimo;
@@ -64,13 +64,11 @@ public void verificarDisponibilidade() {
     this.livro.verificarDisponibilidade();
 }
 
+//Métodos de devolução
 public void devolverLivro() {
     this.livro.aumentarLivros(1);
-    this.usuario.diminuirEmprestimos(1);
-    this.finalizarEmprestimo();
 }
-//Métodos de devolução
-public void 
+
 //Representação textual do empréstimo
 @Override 
 public String toString() {
