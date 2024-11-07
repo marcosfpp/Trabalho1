@@ -176,8 +176,12 @@ public class App{
                                 // verifica se o usuário já possui este livro emprestado
                                 livroJaEmprestado = false;
                                 for (Emprestimo emprestimo : emprestimos) {
-                                    if ()
-                        
+                                    if (emprestimo != null && emprestimo.getCliente().getId().equals(idUsu) && emprestimo.getLivro().get.MostrarIdLivro() == codigoLivro && emprestimo.isEmprestimoAtivo()) {
+                                        livroJaEmprestado = true;
+                                        break;
+                                    }
+                                }
+                        if (livroJaEmprestado)
                         
                     break;
                     case 4:
