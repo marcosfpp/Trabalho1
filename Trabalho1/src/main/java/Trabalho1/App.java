@@ -47,6 +47,51 @@ public class App {
                    
                     break;    
                 case 5:
+                    try {
+                        // Contador de empréstimos 
+                        int qtdEmprestimos = 0;
+                        
+                    }
+                        // Entrada de usuário
+                        String escolha;
+                        int idUsu;
+                        int codigo_e;
+                        String dataDeEmp;
+                        
+                        // Arrays para armazenar objetos do sistema
+                        Clientes[] clientes = new Clientes[100];  // Array de usuários 
+                        Livros[] livros = new Livros[100];       // Array de livros
+                        Emprestimo[] emprestimos = new Emprestimo[100]; //Array de empréstimos 
+                        
+                    }
+                        boolean usuarioEncontrado = false, livroEncontrado = false, livroJaEmprestado = false;
+                        boolean possuiEmprestimoMaximo = false;
+                        System.out.println("==========================="); 
+                        System.out.println("          EMPRÉSTIMO      ");
+                        System.out.println("===========================");
+                        
+                        System.out.println("Deseja pegar um livro emprestado? (s/n): ");
+                        escolha = scan.next().trim().toLowerCase();
+                        scan.nextLine();
+                        
+                        while (escolha.equals("sim"))
+                        
+                        
+                        for (Clientes clientes : Clientes) {
+                            if (clientes != null && clientes.getId() == idUsu)
+                                possuiEmprestimoMaximo = clientes.getQuantidadeEmprs() >= 3;
+                                break;
+                            }
+                        }
+                            if (!usuarioEncontrado) {
+                                System.out.println("Usuário não cadastrado!");
+                            } else if (possuiEmprestimoMaximo) {
+                                System.out.println("Este usuário já possui 3 empréstimos ativos. Devolva pelo menos 1 livro antes de pegar outro.");
+                            } else {
+                                System.out.println("Informe o código do livro que deseja pegar emprestado: ");
+                                codigo_e = scan.nextInt();
+                                scan.nextLine();
+                                
                     break;
         }
     }
