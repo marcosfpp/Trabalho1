@@ -181,16 +181,17 @@ public class App{
                                 // verifica se o usuário já possui este livro emprestado
                                 livroJaEmprestado = false;
                                  for (Emprestimo emprestimo : emprestimos) {
-                                    if (emprestimo != null && emprestimo.getCliente().getId().equals(idUsu) && emprestimo.getLivro().get.MostrarIdLivro() == codigoLivro && emprestimo.isEmprestimoAtivo()) {
+                                    if (emprestimo != null && emprestimo.getCliente().getId().equals(idUsu) && emprestimo.getLivro().getMostrarIdLivro() == codigo_e && emprestimo.isEmprestimoAtivo()) {
                                         livroJaEmprestado = true;
                                         break;
                                     }
                                 }
+                                 
                         if (livroJaEmprestado) {
                             System.out.println("Este usuário já possui este livro emprestado.");
                         } else {
                             System.out.println("Informe a data de empréstimo (dd/mm/aaaa)");
-                            String dataEmprestimo = scan.nextLine();
+                            dataEmprestimo = scan.nextLine();
                             
                             // Registra o novo empréstimo
                             emprestimos[qtdEmprestimos++] = new Emprestimo(livroSelecionado, dataEmprestimo, clienteSelecionado);
@@ -200,12 +201,14 @@ public class App{
                             //Atualiza quantidade de exemplares do livro e do cliente
                             livroSelecionado.setPegarlivro(1);
                             clienteSelecionado.setQuantidadeEmprestimos(1);
-                            }   
-                            }      
+                          }      
+                      }   
+                   }
                 
                 System.out.println("Deseja realizar outro empréstimo? (s/n): ");
                 escolha = scan.next().toLowerCase();
                 scan.nextLine();
+               }
             
                     } catch(Exception e) {
                         System.out.println("Erro na entrada de dados. Verifique e tente novamente.");
