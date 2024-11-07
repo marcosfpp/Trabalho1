@@ -19,13 +19,35 @@ public class Clientes {
         
 
         //Criação de gets e listagens
-
+        
+        public String naoEmprestimo(){
+            return "Nao foi possivel realizar o emprestimo";
+        }
+        public int setQuantidadeEmprestimos(int numeroEmprestimo){
+            if(this.qtd_Emprestada >= 0 || this.qtd_Emprestada <= 3 ){
+                this.qtd_Emprestada = this.qtd_Emprestada + numeroEmprestimo;
+            }
+            else if (this.qtd_Emprestada > 3){
+                naoEmprestimo();
+            }
+            return 0;
+        }
+        public int getMostrarQuantidadeEmprestada(){
+            return this.qtd_Emprestada;
+        }
         public String getEmail() {
             return this.email;
         }
 
         public String getTelefone() {
             return this.telefone;
+        }
+        
+        public String getNome() {
+            return this.nome;
+        }
+        public String getId() {
+            return this.numeroID;
         }
 
         

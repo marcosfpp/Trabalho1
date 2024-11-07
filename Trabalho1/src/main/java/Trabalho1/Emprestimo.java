@@ -2,22 +2,22 @@ package Trabalho1;
 
 public class Emprestimo {
     
-private Clientes usuario;
+private Clientes cliente;
 private Livros livro;
 private String dataEmprestimo;
 private String dataDevolucao;
 private boolean emprestimoAtivo = false;
 
 //Construtor principal para empréstimos ativos
-public Emprestimo(Livros livro, String dataEmprestimo, Clientes usuario) {
-    this.usuario = usuario;
+public Emprestimo(Livros livro, String dataEmprestimo, Clientes cliente) {
+    this.cliente = cliente;
     this.livro = livro;
     this.dataEmprestimo = dataEmprestimo;
     this.emprestimoAtivo = true;
-    this.usuario.setQuantidadeEmprestimos(1);
+    this.cliente.setQuantidadeEmprestimos(1);
 }
 
-//Construtor secundário para empr[estimos inativos ou apenas para consultar
+//Construtor secundário para empréstimos inativos ou apenas para consultar
 public Emprestimo(Livros livro, String dataEmprestimo, String dataDevolucao) {
     this.livro = livro;
     this.dataEmprestimo = dataEmprestimo;
@@ -30,8 +30,8 @@ public Livros getLivro() {
     return this.livro;
 }
 
-public Clientes getUsuario() {
-    return this.usuario;
+public Clientes getCliente() {
+    return this.cliente;
 }
 
 public String getDataEmprestimo() {
@@ -57,24 +57,29 @@ public void finalizarEmprestimo() {
 }
 //Métodos de empréstimo
 public void realizarEmprestimo() {
-    this.livro.emprestarExemplares(1);
+    this.livro.setPegarlivro(1);
 }
 
 public void verificarDisponibilidade() {
     this.livro.verificarDisponibilidade();
 }
 
+//Métodos de devolução
 public void devolverLivro() {
-    this.livro.aumentarLivros(1);
-    this.usuario.diminuirEmprestimos(1);
-    this.finalizarEmprestimo();
+    this.livro.setDevolverLivros(1);
 }
+
 //Representação textual do empréstimo
 @Override 
 public String toString() {
-    return "Usuário: " + this.usuario.getNome() + "\n" +
-               "ID do Usuário: " + this.usuario.getID() + "\n" +
+    return "Usuário: " + this.cliente.getNome() + "\n" +
+
+               "ID do Usuário: " + this.cliente.getId() + "\n" +
                "Livro: " + this.livro.getTitulo() + "\n" +
                "ID do Livro: " + this.livro.getCodigo();
+               "ID do Usuário: " + this.cliente.getId() + "\n" +
+               "Codigo livro: " + this.livro.getMostrarIdLivro() +
+               "Livro: " + this.livro.getMostrarNome() + "\n";
+
     }
 }

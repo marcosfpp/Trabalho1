@@ -5,12 +5,12 @@ package Trabalho1;
 public class AppEmprestimo {
     public static void main(String[] args) {
         //Criando instâncias de usuário e livro para o teste
-        Clientes usuario = new Clientes("Carlos Silva", 101); //Nome e ID do usuário
-        Livros livro = new Livros("O Senhor dos Anéis", 1001); // Título e código do livro 
+        Clientes usuario = new Clientes("Carlos Silva", "","",""); //Nome e ID do usuário
+        Livros livro = new Livros(15, "O Senhor dos Anéis", "1001", 1985, 45); // Título e código do livro 
         
         //Exibindo o estado inicial dos objetos
         System.out.println("Usuário criado: " + usuario.getNome() + ", ID: " + usuario.getId());
-        System.out.println("Livro criado: " + livro.getTitulo() + ", Código: " + livro.getCodigo());
+        System.out.println("Livro criado: " + livro.getMostrarNome() + ", Código: " + livro.getMostrarIdLivro());
         
         //criando um empréstimo ativo 
         Emprestimo emprestimo = new Emprestimo(livro, "01/11/2024", usuario);
@@ -29,5 +29,5 @@ public class AppEmprestimo {
         
         //Exibindo o estado final dos objetos 
         System.out.println("\nEstado final do empréstimo:\n" + emprestimo);
-        
+    }
 }
