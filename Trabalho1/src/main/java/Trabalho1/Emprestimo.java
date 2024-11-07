@@ -57,7 +57,7 @@ public void finalizarEmprestimo() {
 }
 //Métodos de empréstimo
 public void realizarEmprestimo() {
-    this.livro.emprestarExemplares(1);
+    this.livro.setPegarlivro(1);
 }
 
 public void verificarDisponibilidade() {

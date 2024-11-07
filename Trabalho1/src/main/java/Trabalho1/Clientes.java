@@ -31,6 +31,9 @@ public class Clientes {
         public String getNome() {
             return this.nome;
         }
+        public String getId() {
+            return this.numeroID;
+        }
 
         
         
