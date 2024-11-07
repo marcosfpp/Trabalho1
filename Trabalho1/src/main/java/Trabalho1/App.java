@@ -185,20 +185,8 @@ public class App{
                             } else if(!livroSelecionado.verificarDisponibilidade()) {
                                 System.out.println("O livro não possui exemplares disponíveis.");
                             } else {
-                                    System.out.println(""
-                                
-                                 for (Emprestimo emprestimo : emprestimos {
-                                    if (emprestimo != null && emprestimo.getCliente().getId().equals(idUsu) && emprestimo.getLivro().getMostrarIdLivro() == codigo_e && emprestimo.isEmprestimoAtivo()) {
-                                        livroJaEmprestado = true;
-                                        break;
-                                    }
-                                }
-                                 
-                        if (livroJaEmprestado) {
-                            System.out.println("Este usuário já possui este livro emprestado.");
-                        } else {
-                            System.out.println("Informe a data de empréstimo (dd/mm/aaaa)");
-                            dataEmprestimo = scan.nextLine();
+                                    System.out.println("Informe a data de empréstimo (dd/mm/aaaa)");
+                                    dataEmprestimo = scan.nextLine();
                             
                             // Registra o novo empréstimo
                             emprestimos[qtdEmprestimos++] = new Emprestimo(livroSelecionado, dataEmprestimo, clienteSelecionado);
