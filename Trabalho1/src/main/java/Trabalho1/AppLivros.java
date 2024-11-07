@@ -21,17 +21,16 @@ public class AppLivros {
                         for (int i = 0; i < 50; i++){
                             System.out.println("\n");
                         }
-                        if (livros.length <= 2){
-                            String c = new String(); 
-                            c = "s";
-                            while(c == "s" || c == "S"){
-                                j++;
-                                System.out.println("Digite o título do livro: ");
-                                String nome = scan.nextLine();
-                                System.out.println("\n");
+                        
+                        String c = "s"; 
+                        while(c == "s" || c == "S"){
+                            j++;
+                            System.out.println("Digite o título do livro: ");
+                            String nome = scan.nextLine();
+                            System.out.println("\n");
 
-                                System.out.println("Digite o(s) autor(es) do livro: ");
-                                String autor = scan.nextLine();
+                            System.out.println("Digite o(s) autor(es) do livro: ");
+                            String autor = scan.nextLine();
                                 System.out.println("\n");
 
                                 System.out.println("Digite o ano de publicação: ");
@@ -59,15 +58,15 @@ public class AppLivros {
                             for (int i = 0; i < 50; i++){
                                 System.out.println("\n");
                             }
-                        }
-                        else{
-                            System.out.println("Não e possível cadastrar mais livros!");
-                        }
+                        
+      
                         break;
                     
                     case 2:
-                        for(Livros i : livros){
-                            System.out.println(i);
+                        for(int i = 0; i < livros.length; i++){
+                            if (livros[i] != null){
+                                System.out.println(livros[i].toString());
+                            }
                         }  
                         break;
                         
