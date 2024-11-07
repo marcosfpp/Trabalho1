@@ -166,6 +166,13 @@ public class App{
                                 //Busca pelo livro
                                 Livros livroSelecionado = null;
                                 for (Livros livro : livros){
+                                    if (livro != null && livro.getMostrarIdLivro() == codigo_e) {
+                                        livroSelecionado = livro;
+                                        livroEncontrado = true;
+                                        break;
+                                    }
+                                }
+                                
                             if(!livroEncontrado) {    
                                 System.out.println("Livro não encontrado.");
                             } else if(!livroSelecionado.verificarDisponibilidade()) {
@@ -173,7 +180,7 @@ public class App{
                             } else {
                                 // verifica se o usuário já possui este livro emprestado
                                 livroJaEmprestado = false;
-                                for (Emprestimo emprestimo : emprestimos) {
+                                 for (Emprestimo emprestimo : emprestimos) {
                                     if (emprestimo != null && emprestimo.getCliente().getId().equals(idUsu) && emprestimo.getLivro().get.MostrarIdLivro() == codigoLivro && emprestimo.isEmprestimoAtivo()) {
                                         livroJaEmprestado = true;
                                         break;
