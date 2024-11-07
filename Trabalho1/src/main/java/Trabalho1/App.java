@@ -28,6 +28,10 @@ public class App{
         int cod_livro;
         
         
+        //Inserir os verificadores aqui
+        boolean v_codigolivro = false;
+     
+        
         
         Clientes[] clientes = new Clientes[5];
         Emprestimo[] emprestimo = new Emprestimo[5];
@@ -141,17 +145,41 @@ public class App{
                                     for (int a = 0; a < livros.length; a++) {
                                             //Dá para jogar verificação de livro encontrado aqui, verificar com o pessoal
                                         if (livros[a] != null) {
-                                            if (livros[a].getCodigolivro() == cod_livro) {
+                                            if (livros[a].Codigolivro() == cod_livro) {//Criar get para puxar código livro
                                                 for (int j = 0; j < emprestimo.length; j++) {
-                                                    if (emprestimo[j].getUsuario().getId() == idUsuario) { //Faltando criação do getId
-                                                        if (emprestimo[j].getLivro()) {
-                                                            
+                                                    if (emprestimo[j].getUsuario().getId()== idUsuario) {
+                                                        if (emprestimo[j].getLivro().getCodigolivro() == cod_livro) { //Criar get puxar livro
+                                                            v_codigolivro = true;
+                                                            //Validar as verificaçãoes em boolean nesses finais de código, replicar para o código acima desse
+                                                            break;
                                                         }
                                                     }
                                                 }
+                                            }if (v_codigolivro) {
+                                                for (int j = 0; j < emprestimo.length; j++) {
+                                                    if (emprestimo[j] != null) {
+                                                        if (emprestimo[j].getUsuario().getId() == idUsuario) {
+                                                            if (emprestimo[j].getLivro().getCodigolivro() == cod_livro) {
+                                                                emprestimo[j].getLivro().aumentarlivro(1);
+                                                                emprestimo[j].setDataEmprestimo(null);
+                                                                emprestimo[j].finalizarEmprestimo();
+                                                                emprestimo[j].verificarDisponibilidade();
+                                                                emprestimo[j].isEmprestimoAtivo();
+                                                                System.out.println("O " + "foi devolvido");// Depois do + printar nome livro
+                                                                
+                                                            }
+                                                        }
+                                                        
+                                                    }
+                                                
+                                                }
+                                            } else  {
+                                                System.out.println("Erro, o código não condiz ao usuário emprestado");
                                             }
+                                        } else {
+                                            System.out.println("Código do livro inexistente");
                                         }
-                                        }
+                                    } // parei aqui, ainda existe mais coisa
                                 }
                             }catch (Exception e) {
                                 System.out.println("Mensagem de erro");
