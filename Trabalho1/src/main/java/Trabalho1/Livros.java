@@ -42,4 +42,12 @@ public class Livros {
     public int getMostrarExemplares(){
         return this.numeroExemplares;
     }
+    @Override
+    public String toString(){
+        return "Nome: " + this.nomeLivro + "\n" +
+               "Autor(es)" + this.nomeAutor + "\n" +
+               "Quantiddade de paginas: " + this.anoPublicacao + "\n" +
+               "Numero de exemplares" + this.numeroExemplares + "\n";
+    }
+    
 }
