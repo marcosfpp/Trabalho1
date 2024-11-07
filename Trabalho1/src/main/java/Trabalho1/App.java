@@ -194,17 +194,65 @@ public class App{
                         break;
 
                     case 3:
-                        System.out.println("Deseja fazer o empréstimo de algum livro, digite S ou N");
-                        opc_sec = scan.nextLine();
-                        if ("S".equals(opc_sec) || "s".equals(opc_sec) || "Sim".equals(opc_sec) || "sim".equals(opc_sec)) {
-                            try {
-                                
-                            }catch (Exception e) {
-                                System.out.println("Mensagem de erro");
+                        // Contador de empréstimos 
+                        int qtdEmprestimos = 0;
+                        
+                    
+                        // Entrada de usuário
+                        String escolha;
+                        int idUsu;
+                        int codigo_e;
+                        String dataDeEmp;
+                        
+                        // Arrays para armazenar objetos do sistema
+                        Clientes[] clientes = new Clientes[100];  // Array de usuários 
+                        Livros[] livros = new Livros[100];       // Array de livros
+                        Emprestimo[] emprestimos = new Emprestimo[100]; //Array de empréstimos 
+                        
+                    
+                      boolean ClienteEncontrado = false;
+                      boolean livroEncontrado = false;
+                      boolean livroJaEmprestado = false;
+                      boolean possuiEmprestimoMaximo = false;
+                      
+                        System.out.println("==========================="); 
+                        System.out.println("          EMPRÉSTIMO      ");
+                        System.out.println("===========================");
+                        
+                        System.out.println("Deseja pegar um livro emprestado? (s/n): ");
+                        escolha = scan.next().trim().toLowerCase();
+                        scan.nextLine();
+                        
+                        while (escolha.equals("sim") || escolha.equals("s")){
+                            System.out.println("Digite seu ID de cliente: ");
+                            idUsu = scan.nextInt();
+                            scan.nextLine();
+                        
+                        // busca pelo cliente no array de clientes
+                        for (Clientes cliente : clientes) {
+                            if (clientes != null && clientes.getId() == idUsu) {
+                                clienteEncontrado = true;
+                                possuiEmprestimoMaximo = cliente.getQuantidadeEmprs() >= 3;
+                                break;
                             }
                         }
-                        break;
-
+                            if (!clienteEncontrado) {
+                                System.out.println("Cliente não cadastrado!");
+                            } else if (possuiEmprestimoMaximo) {
+                                System.out.println("Este usuário já possui 3 empréstimos ativos. Devolva pelo menos 1 livro antes de pegar outro.");
+                            } else {
+                                System.out.println("Informe o código do livro que deseja pegar emprestado: ");
+                                codigo_e = scan.nextInt();
+                                scan.nextLine();
+                                
+                                // (A lógica de empréstimo do livro seguiria daqui)
+                            }
+                            System.out.println("Deseja realizar outro empréstimo? (s/n): ");
+                            escolha = scan.nextLine().trim().toLowerCase();
+                        }
+                        
+                                
+                    break;
                     case 4:
                         System.out.println("Deseja fazer a devolução de algum livro, digite S ou N");
                         opc_sec = scan.nextLine();
