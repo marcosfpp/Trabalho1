@@ -121,15 +121,17 @@ public class App{
                         String dataDeEmp;
                         
                         // Arrays para armazenar objetos do sistema
-                        Clientes[] clientes = new Clientes[100];  // Array de usuários 
-                        Livros[] livros = new Livros[100];       // Array de livros
+                        
                         Emprestimo[] emprestimos = new Emprestimo[100]; //Array de empréstimos 
                         
                     
-                      boolean ClienteEncontrado = false;
+                      boolean clienteEncontrado = false;
                       boolean livroEncontrado = false;
+                      boolean possuiMaisDe3Emprestimos = false;
                       boolean livroJaEmprestado = false;
-                      boolean possuiEmprestimoMaximo = false;
+                      int qtdEmprestimos = 0;
+                      
+                  
                       
                         System.out.println("==========================="); 
                         System.out.println("          EMPRÉSTIMO      ");
@@ -144,17 +146,18 @@ public class App{
                             idUsu = scan.nextInt();
                             scan.nextLine();
                         
-                        // busca pelo cliente no array de clientes
+                        // busca pelo cliente 
                         for (Clientes cliente : clientes) {
-                            if (clientes != null && clientes.getId() == idUsu) {
+                            if (cliente != null && cliente.getId() == (idUsu)) {
                                 clienteEncontrado = true;
-                                possuiEmprestimoMaximo = cliente.getQuantidadeEmprs() >= 3;
+                                clienteSelecionado = cliente;
+                                possuiMaisDe3Emprestimos = cliente.getMostrarQuantidadeEmprestada() >= 3;
                                 break;
                             }
                         }
                             if (!clienteEncontrado) {
                                 System.out.println("Cliente não cadastrado!");
-                            } else if (possuiEmprestimoMaximo) {
+                            } else if (possuiMaisDe3Emprestimos) {
                                 System.out.println("Este usuário já possui 3 empréstimos ativos. Devolva pelo menos 1 livro antes de pegar outro.");
                             } else {
                                 System.out.println("Informe o código do livro que deseja pegar emprestado: ");
@@ -163,11 +166,19 @@ public class App{
                                 
                                 // (A lógica de empréstimo do livro seguiria daqui)
                             }
-                            System.out.println("Deseja realizar outro empréstimo? (s/n): ");
-                            escolha = scan.nextLine().trim().toLowerCase();
                         }
                         
-                                
+                            if(!livroEncontrado) {    
+                                System.out.println("Livro não encontrado.");
+                            } else if(!livroSelecionado.verificarDisponibilidade()) {
+                                System.out.println("O livro não possui exemplares disponíveis.");
+                            } else {
+                                // verifica se o usuário já possui este livro emprestado
+                                livroJaEmprestado = false;
+                                for (Emprestimo emprestimo : emprestimos) {
+                                    if ()
+                        
+                        
                     break;
                     case 4:
                         System.out.println("Deseja fazer a devolução de algum livro, digite S ou N");
