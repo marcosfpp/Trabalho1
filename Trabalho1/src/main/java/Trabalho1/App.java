@@ -34,20 +34,7 @@ public class App {
                     System.out.println("[CADASTRO USUÁRIO]\n");
                     break;
                 case 3:
-                    System.out.println("[EMPRÉSTIMO]");
-                    break;
-                case 4:
-                    System.out.println("Deseja fazer a devolução de um livro: (S ou N)");
-                    String opc_sec = scan.nextLine();
-                    if (opc_sec == "S") {
-                        System.out.println("Digite o código do livro que deseja devolver");
-                    }
-                    
-                    
-                   
-                    break;    
-                case 5:
-                    try {
+                     try {
                         // Contador de empréstimos 
                         int qtdEmprestimos = 0;
                         
@@ -64,8 +51,11 @@ public class App {
                         Emprestimo[] emprestimos = new Emprestimo[100]; //Array de empréstimos 
                         
                     }
-                        boolean usuarioEncontrado = false, livroEncontrado = false, livroJaEmprestado = false;
-                        boolean possuiEmprestimoMaximo = false;
+                      boolean ClienteEncontrado = false;
+                      boolean livroEncontrado = false;
+                      boolean livroJaEmprestado = false;
+                      boolean possuiEmprestimoMaximo = false;
+                      
                         System.out.println("==========================="); 
                         System.out.println("          EMPRÉSTIMO      ");
                         System.out.println("===========================");
@@ -93,6 +83,19 @@ public class App {
                                 scan.nextLine();
                                 
                     break;
+        }
+                case 4:
+                    System.out.println("Deseja fazer a devolução de um livro: (S ou N)");
+                    String opc_sec = scan.nextLine();
+                    if (opc_sec == "S") {
+                        System.out.println("Digite o código do livro que deseja devolver");
+                    }
+                    
+                    
+                   
+                    break;    
+                case 5:
+
         }
     }
 }
