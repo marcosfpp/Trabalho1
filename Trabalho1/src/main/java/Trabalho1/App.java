@@ -150,16 +150,23 @@ public class App{
                             if (cliente != null && cliente.getId().equals(idUsu)) {
                                 clienteSelecionado = cliente;
                                 clienteEncontrado = true;
-                                possuiMaisDe3Emprestimos = cliente.getMostrarQuantidadeEmprestada() >= 3;
                                 break;
                             }
                         }
                             if (!clienteEncontrado) {
                                 System.out.println("Cliente não cadastrado!");
-                            } else if (possuiMaisDe3Emprestimos) {
-                                System.out.println("Este usuário já possui 3 empréstimos ativos. Devolva pelo menos 1 livro antes de pegar outro.");
-                            } else {
-                                System.out.println("Informe o código do livro que deseja pegar emprestado: ");
+                            }  else {
+                                // Verifica se o cliente já possui um empréstimo ativo
+                                boolean clienteJaPossuiEmprestimoAtivo = false;
+                                for (Emprestimo emprestimo : emprestimos) {
+                                    if (emprestimo != null && emprestimo.getCliente().getId().equals(idUsu) && emprestimo.isEmprestimoAtivo()) {
+                                        clienteJaPossuiEmprestimoAtivo = true;
+                                        break;
+                                    }
+                                }
+                                if (clienteJaPossuiEmprestimoAtivo) {
+                                    System.out.println("Este cliente já possui um empréstimo ativo. Conclua antes de fazer outro empréstimo.");
+                                } else { System.out.println("Informe o código do livro que deseja pegar emprestado: ");
                                 codigo_e = scan.nextInt();
                                 scan.nextLine();
                                 
@@ -178,9 +185,9 @@ public class App{
                             } else if(!livroSelecionado.verificarDisponibilidade()) {
                                 System.out.println("O livro não possui exemplares disponíveis.");
                             } else {
-                                // verifica se o usuário já possui este livro emprestado
-                                livroJaEmprestado = false;
-                                 for (Emprestimo emprestimo : emprestimos) {
+                                    System.out.println(""
+                                
+                                 for (Emprestimo emprestimo : emprestimos {
                                     if (emprestimo != null && emprestimo.getCliente().getId().equals(idUsu) && emprestimo.getLivro().getMostrarIdLivro() == codigo_e && emprestimo.isEmprestimoAtivo()) {
                                         livroJaEmprestado = true;
                                         break;
