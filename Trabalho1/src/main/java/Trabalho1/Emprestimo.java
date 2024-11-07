@@ -66,7 +66,7 @@ public void verificarDisponibilidade() {
 
 //Métodos de devolução
 public void devolverLivro() {
-    this.livro.aumentarLivros(1);
+    this.livro.setDevolverLivros(1);
 }
 
 //Representação textual do empréstimo
@@ -74,7 +74,7 @@ public void devolverLivro() {
 public String toString() {
     return "Usuário: " + this.usuario.getNome() + "\n" +
                "ID do Usuário: " + this.usuario.getId() + "\n" +
-               "Livro: " + this.livro.getTitulo() + "\n" +
-               "ID do Livro: " + this.livro.getCodigo();
+               "Codigo livro: " + this.livro.getMostrarIdLivro() +
+               "Livro: " + this.livro.getMostrarNome() + "\n";
     }
 }

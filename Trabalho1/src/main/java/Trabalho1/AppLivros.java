@@ -25,6 +25,11 @@ public class AppLivros {
                         String c = "s"; 
                         while(c == "s" || c == "S"){
                             j++;
+                            System.out.println("Digite o id do livro: ");
+                            int id = scan.nextInt();
+                            scan.nextLine();
+                            System.out.println("\n");
+                            
                             System.out.println("Digite o título do livro: ");
                             String nome = scan.nextLine();
                             System.out.println("\n");
@@ -43,7 +48,7 @@ public class AppLivros {
                                 scan.nextLine();
                                 System.out.println("\n");
 
-                                Livros informacoesLivro = new Livros(nome, autor, anoPubli, quantExemplares);
+                                Livros informacoesLivro = new Livros(id, nome, autor, anoPubli, quantExemplares);
                                 livros[j] = informacoesLivro;
                                 
                                 System.out.println(livros.length);
