@@ -32,6 +32,9 @@ public class Clientes {
             }
             return 0;
         }
+        public int getMostrarQuantidadeEmprestada(){
+            return this.qtd_Emprestada;
+        }
         public String getEmail() {
             return this.email;
         }

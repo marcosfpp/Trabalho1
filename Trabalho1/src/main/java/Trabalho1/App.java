@@ -132,7 +132,7 @@ public class App{
                                 
                                     for (int i = 0; i < clientes.length; i++) {
                                         //Fazer uma validação de usuário quando puder
-                                        if (clientes[i].getQtdEmprestada() > 0) {
+                                        if (clientes[i].getMostrarQuantidadeEmprestada() > 0) {
                                             for (int j = 0; j < emprestimo.length; j++) {
                                                 if (emprestimo[j] != null) { // Validação da existência do empréstimo                                                   System.out.println("");
                                                     //Aqui dá para jogar outro if para o usuário válidar seus empréstimos(nome livro, data...)
@@ -145,10 +145,10 @@ public class App{
                                     for (int a = 0; a < livros.length; a++) {
                                             //Dá para jogar verificação de livro encontrado aqui, verificar com o pessoal
                                         if (livros[a] != null) {
-                                            if (livros[a].Codigolivro() == cod_livro) {//Criar get para puxar código livro
+                                            if (livros[a].getMostrarIdLivro() == cod_livro) {//Criar get para puxar código livro
                                                 for (int j = 0; j < emprestimo.length; j++) {
                                                     if (emprestimo[j].getUsuario().getId()== idUsuario) {
-                                                        if (emprestimo[j].getLivro().getCodigolivro() == cod_livro) { //Criar get puxar livro
+                                                        if (emprestimo[j].getLivro().getMostrarIdLivro() == cod_livro) { //Criar get puxar livro
                                                             v_codigolivro = true;
                                                             //Validar as verificaçãoes em boolean nesses finais de código, replicar para o código acima desse
                                                             break;
@@ -159,8 +159,8 @@ public class App{
                                                 for (int j = 0; j < emprestimo.length; j++) {
                                                     if (emprestimo[j] != null) {
                                                         if (emprestimo[j].getUsuario().getId() == idUsuario) {
-                                                            if (emprestimo[j].getLivro().getCodigolivro() == cod_livro) {
-                                                                emprestimo[j].getLivro().aumentarlivro(1);
+                                                            if (emprestimo[j].getLivro().getMostrarIdLivro() == cod_livro) {
+                                                                emprestimo[j].getLivro().setDevolverLivros(1);
                                                                 emprestimo[j].setDataEmprestimo(null);
                                                                 emprestimo[j].finalizarEmprestimo();
                                                                 emprestimo[j].verificarDisponibilidade();
