@@ -157,6 +157,9 @@ public class App{
                         // Entrada de usuário
                         String escolha;
                         int idUsu;
+                        System.out.println("Digite seu ID de cliente: ");
+                        idUsu = scan.nextInt();
+                        scan.nextLine();
                         int codigo_e;
                         String dataEmprestimo;
                         
