@@ -120,9 +120,7 @@ public class App{
                         int codigo_e;
                         String dataDeEmp;
                         
-                        // Arrays para armazenar objetos do sistema
                         
-                        Emprestimo[] emprestimos = new Emprestimo[100]; //Array de empréstimos 
                         
                     
                       boolean clienteEncontrado = false;
@@ -181,7 +179,15 @@ public class App{
                                         break;
                                     }
                                 }
-                        if (livroJaEmprestado)
+                        if (livroJaEmprestado) {
+                            System.out.println("Este usuário já possui este livro emprestado.");
+                        } else {
+                            System.out.println("Informe a data de empréstimo (dd/mm/aaaa)");
+                            String dataEmprestimo = scan.nextLine();
+                            
+                            // Registra o novo empréstimo
+                            emprestimos
+                        }
                         
                     break;
                     case 4:
