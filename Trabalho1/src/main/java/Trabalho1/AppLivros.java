@@ -18,13 +18,23 @@ public class AppLivros {
                 
                 switch(opcaoMenu){
                     case 1:
-                        for (int i = 0; i < 50; i++){
-                            System.out.println("\n");
-                        }
                         
                         String c = "s"; 
-                        while(c == "s" || c == "S"){
+                        while(c == "S" || c == "s"){
+                            if (j >= livros.length - 1){
+                                System.out.println("Nao foi possivel cadastrar mais livros, limite alcançado");
+                                break;
+                            } 
                             j++;
+                            
+                            int numeroLivros = 0;
+                            for (int i = 0; i < livros.length; i++){
+                                if (livros[i] != null){
+                                    numeroLivros++;
+                            }
+                                System.out.println("\n");
+                            }
+                            
                             System.out.println("Digite o id do livro: ");
                             int id = scan.nextInt();
                             scan.nextLine();
@@ -36,35 +46,30 @@ public class AppLivros {
 
                             System.out.println("Digite o(s) autor(es) do livro: ");
                             String autor = scan.nextLine();
-                                System.out.println("\n");
+                            System.out.println("\n");
 
-                                System.out.println("Digite o ano de publicação: ");
-                                int anoPubli = scan.nextInt();
-                                scan.nextLine();
-                                System.out.println("\n");
+                            System.out.println("Digite o ano de publicação: ");
+                            int anoPubli = scan.nextInt();
+                            scan.nextLine();
+                             System.out.println("\n");
 
-                                System.out.println("Digite a quantidade de exemplares disponíveis: ");
-                                int quantExemplares = scan.nextInt();
-                                scan.nextLine();
-                                System.out.println("\n");
+                            System.out.println("Digite a quantidade de exemplares disponíveis: ");
+                            int quantExemplares = scan.nextInt();
+                            scan.nextLine();
+                            System.out.println("\n");
 
-                                Livros informacoesLivro = new Livros(id, nome, autor, anoPubli, quantExemplares);
-                                livros[j] = informacoesLivro;
+                            Livros informacoesLivro = new Livros(id, nome, autor, anoPubli, quantExemplares);
+                            livros[numeroLivros] = informacoesLivro;              
                                 
-                                System.out.println(livros.length);
-                                
-                                System.out.println("Deseja continuar? S/N");
-                                c = scan.nextLine();
-                                
-                                System.out.println(livros.length);
-
-                                System.out.println("\n\n");
+                            System.out.println("Deseja continuar? S/N");
+                            c = scan.nextLine();
+                                                  
+                            System.out.println("\n\n");
                             }
-                            for (int i = 0; i < 50; i++){
+                            for (int i = 0; i < 5; i++){
                                 System.out.println("\n");
                             }
                         
-      
                         break;
                     
                     case 2:
@@ -83,7 +88,7 @@ public class AppLivros {
                         System.out.println("Digite uma opção válida! ");
                         break; 
                 }
-        for (int i = 0; i < 50; i++){
+        for (int i = 0; i < 5; i++){
             System.out.println("\n");
         }
         } 
