@@ -25,7 +25,8 @@ public class AppClientes {
         int numeroClientes = 0;
         int vagasClientes = 0;
         int quantidade = 0;
-        String nomeUsuario, emailUsuario, contatoUsuario, idUsuario;
+        int idUsuario = 0;
+        String nomeUsuario, emailUsuario, contatoUsuario;
 
         Clientes[] clientes = new Clientes[5];
 
@@ -66,8 +67,8 @@ public class AppClientes {
                                     emailUsuario = scan.nextLine();
                                     System.out.println("Digite o número para contato");
                                     contatoUsuario = scan.nextLine();
-                                    System.out.println("Digite o número o CPF para identificação:");
-                                    idUsuario = scan.nextLine();
+                                    
+                                    idUsuario = (i + 1);
 
                                     clientes[i] = new Clientes(nomeUsuario, emailUsuario, idUsuario, contatoUsuario);
                                     System.out.println("O usuário " + clientes[i].getNome() + "foi cadastrado!\n");
@@ -81,7 +82,7 @@ public class AppClientes {
                     break;
                     
                 case 4:
-                    // tentativa de uma listagem simples e eficaz
+                    // tentativa de uma listagem simples
                      for (int i = 0; i < clientes.length; i++) {
                          System.out.println("\n" + clientes[i].toString() + "\n" + clientes[i].getEmail() + "\n" + clientes[i].getTelefone());
                         
