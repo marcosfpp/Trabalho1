@@ -25,6 +25,7 @@ public class App{
         int vagasClientes = 0;
         int quantidade = 0;
         String nomeUsuario, emailUsuario, contatoUsuario, idUsuario;
+        int cod_livro;
         
         
         
@@ -127,8 +128,30 @@ public class App{
                                 
                                     for (int i = 0; i < clientes.length; i++) {
                                         //Fazer uma validação de usuário quando puder
-                                        if(usuario[i].)
-                                    
+                                        if (clientes[i].getQtdEmprestada() > 0) {
+                                            for (int j = 0; j < emprestimo.length; j++) {
+                                                if (emprestimo[j] != null) { // Validação da existência do empréstimo                                                   System.out.println("");
+                                                    //Aqui dá para jogar outro if para o usuário válidar seus empréstimos(nome livro, data...)
+                                                
+                                                }
+                                            }
+                                        }
+                                    System.out.println("Digite o código do livro para a devolução:");
+                                    cod_livro = scan.nextInt();
+                                    for (int a = 0; a < livros.length; a++) {
+                                            //Dá para jogar verificação de livro encontrado aqui, verificar com o pessoal
+                                        if (livros[a] != null) {
+                                            if (livros[a].getCodigolivro() == cod_livro) {
+                                                for (int j = 0; j < emprestimo.length; j++) {
+                                                    if (emprestimo[j].getUsuario().getId() == idUsuario) { //Faltando criação do getId
+                                                        if (emprestimo[j].getLivro()) {
+                                                            
+                                                        }
+                                                    }
+                                                }
+                                            }
+                                        }
+                                        }
                                 }
                             }catch (Exception e) {
                                 System.out.println("Mensagem de erro");
