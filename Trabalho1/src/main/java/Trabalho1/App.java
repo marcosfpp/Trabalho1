@@ -118,16 +118,16 @@ public class App{
                         String escolha;
                         int idUsu;
                         int codigo_e;
-                        String dataDeEmp;
+                        String dataEmprestimo;
                         
                         
                         
-                    
+                    try {
                       boolean clienteEncontrado = false;
                       boolean livroEncontrado = false;
                       boolean possuiMaisDe3Emprestimos = false;
                       boolean livroJaEmprestado = false;
-                      int qtdEmprestimos = 0;
+                     
                       
                   
                       
@@ -145,10 +145,11 @@ public class App{
                             scan.nextLine();
                         
                         // busca pelo cliente 
+                        Clientes clienteSelecionado = null;
                         for (Clientes cliente : clientes) {
-                            if (cliente != null && cliente.getId() == (idUsu)) {
-                                clienteEncontrado = true;
+                            if (cliente != null && cliente.getId().equals(idUsu)) {
                                 clienteSelecionado = cliente;
+                                clienteEncontrado = true;
                                 possuiMaisDe3Emprestimos = cliente.getMostrarQuantidadeEmprestada() >= 3;
                                 break;
                             }
@@ -162,10 +163,9 @@ public class App{
                                 codigo_e = scan.nextInt();
                                 scan.nextLine();
                                 
-                                // (A lógica de empréstimo do livro seguiria daqui)
-                            }
-                        }
-                        
+                                //Busca pelo livro
+                                Livros livroSelecionado = null;
+                                for (Livros livro : livros){
                             if(!livroEncontrado) {    
                                 System.out.println("Livro não encontrado.");
                             } else if(!livroSelecionado.verificarDisponibilidade()) {
@@ -186,10 +186,26 @@ public class App{
                             String dataEmprestimo = scan.nextLine();
                             
                             // Registra o novo empréstimo
-                            emprestimos
-                        }
-                        
+                            emprestimos[qtdEmprestimos++] = new Emprestimo(livroSelecionado, dataEmprestimo, clienteSelecionado);
+                            emprestimos[qtdEmprestimos - 1].realizarEmprestimo();
+                            System.out.println("Empréstimo realizado com sucesso!");
+                            
+                            //Atualiza quantidade de exemplares do livro e do cliente
+                            livroSelecionado.setPegarlivro(1);
+                            clienteSelecionado.setQuantidadeEmprestimos(1);
+                            }   
+                            }      
+                
+                System.out.println("Deseja realizar outro empréstimo? (s/n): ");
+                escolha = scan.next().toLowerCase();
+                scan.nextLine();
+            
+                    } catch(Exception e) {
+                        System.out.println("Erro na entrada de dados. Verifique e tente novamente.");
+                        scan.nextLine(); // Limpa a entrada para evitar looping em caso de erro
+                    }   
                     break;
+                    
                     case 4:
                         System.out.println("Deseja fazer a devolução de algum livro, digite S ou N");
                         opc_sec = scan.nextLine();
