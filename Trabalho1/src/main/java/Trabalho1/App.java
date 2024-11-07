@@ -324,12 +324,19 @@ public class App{
 
                     case 5:
                         livroExistente = false;
-                        
+                        quantLivros = 0;
                         System.out.println("Deseja listar todos os livros, digite S ou N");
                         opc_sec = scan.nextLine();
                         if ("S".equals(opc_sec) || "s".equals(opc_sec) || "Sim".equals(opc_sec) || "sim".equals(opc_sec)) {
                             try {
                                 
+                                for(Livros liv : livros){
+                                    if(liv != null){
+                                        livroExistente = true;
+                                        quantLivros++;
+                                        System.out.println(livros);
+                                    }
+                                }
                             }catch (Exception e) {
                                 System.out.println("Mensagem de erro");
                             }
