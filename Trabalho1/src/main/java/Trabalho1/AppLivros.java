@@ -17,8 +17,7 @@ public class AppLivros {
                 scan.nextLine();
                 
                 switch(opcaoMenu){
-                    case 1:
-                        
+                    case 1: 
                         String c = "s"; 
                         while(c == "S" || c == "s"){
                             if (j >= livros.length - 1){
