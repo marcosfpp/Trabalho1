@@ -8,7 +8,7 @@ public class Livros {
     private int numeroExemplares;
     
     Livros(int id, String nomeLivro, String nomeAutor, int anoPublicacao, int numeroExemplares){
-       this.idLivro = idLivro;
+       this.idLivro = id;
        this.nomeLivro = nomeLivro;
        this.nomeAutor = nomeAutor;
        this.anoPublicacao = anoPublicacao;

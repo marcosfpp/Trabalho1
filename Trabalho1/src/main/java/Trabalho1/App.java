@@ -3,19 +3,6 @@ package Trabalho1;
 import java.util.Scanner;
 
 public class App{
-    // Criado a função menuinicial com objetivo de mostrar o menu da biblioteca ao usuário.
-    public static void menuinicial() {
-        System.out.println("MENU");
-        System.out.println("1- CADASTRO LIVRO");
-        System.out.println("2- CADASTRO USUÁRIO");
-        System.out.println("3- REALIZAR EMPRÉSTIMO");
-        System.out.println("4- REALIZAR DEVOLUÇÃO");
-        System.out.println("5- LISTAGEM DE LIVROS");
-        System.out.println("6- LISTAGEM DE USUÁRIOS");
-        System.out.println("7- EMPRÉSTIMOS ATIVOS");
-        System.out.println("8- SAIR");
-    }
-
     // Inicialização do código principal.
     public static void main(String[] args) {
         Scanner scan = new Scanner(System.in);
@@ -30,7 +17,7 @@ public class App{
         int idUsuario = 0;
         String nomeUsuario, emailUsuario, contatoUsuario;
         int cod_livro;
-        
+        int opc_pri;
         
         //Inserir os verificadores aqui
         //Lógica de devolução
@@ -39,29 +26,34 @@ public class App{
         boolean v_usu_livro = false;
         //
      
-        
-        
         Clientes[] clientes = new Clientes[5];
         Emprestimo[] emprestimo = new Emprestimo[5];
         Livros[] livros = new Livros[5];
         
-        System.out.println("Bem vindo a biblioteca :)");
-
-        // Opção que permiti o usuário conferir se ele quer utilizar o programa ou não.
-        System.out.println("Você deseja utilizar nossa biblioteca, digite S ou N:");
-        String opc_sec = scan.nextLine();
-
-        if ("S".equals(opc_sec) || "s".equals(opc_sec) || "Sim".equals(opc_sec) || "sim".equals(opc_sec)) {
-            menuinicial();
-            System.out.println("Digite a opção que deseja prosseguir:");
-            int opc_pri = scan.nextInt();
-
             // Inicialização da estrutura de escolha do usuário.
-            while (opc_pri != 8) {
+            do {
+                System.out.println("Bem vindo a biblioteca!");
+                System.out.println("MENU");
+                System.out.println("1- CADASTRO LIVRO");
+                System.out.println("2- CADASTRO USUÁRIO");
+                System.out.println("3- REALIZAR EMPRÉSTIMO");
+                System.out.println("4- REALIZAR DEVOLUÇÃO");
+                System.out.println("5- LISTAGEM DE LIVROS");
+                System.out.println("6- LISTAGEM DE USUÁRIOS");
+                System.out.println("7- EMPRÉSTIMOS ATIVOS");
+                System.out.println("8- SAIR");
+                
+                 System.out.println("Digite a opção que deseja prosseguir:");
+                 opc_pri = scan.nextInt();
+               
+                
+                
                 switch (opc_pri) {
                     case 1:
+                        System.out.println("\n");
+                        System.out.println("\n");
                         System.out.println("Deseja cadastrar um livro, digite S ou N");
-                        opc_sec = scan.nextLine();
+                        String opc_sec = scan.nextLine();
                         if ("S".equals(opc_sec) || "s".equals(opc_sec) || "Sim".equals(opc_sec) || "sim".equals(opc_sec)) {
                                 
                             for (int i = 0; i < livros.length; i++){
@@ -110,6 +102,8 @@ public class App{
                         break;
 
                     case 2:
+                        System.out.println("\n");
+                        System.out.println("\n");
                         System.out.println("Deseja cadastrar um usuário, digite S ou N");
                         opc_sec = scan.nextLine();
                         if ("S".equals(opc_sec) || "s".equals(opc_sec) || "Sim".equals(opc_sec) || "sim".equals(opc_sec)) {
@@ -147,8 +141,10 @@ public class App{
                                 }
                                     }
 
-                        }catch(Exception e){System.out.println("Erro ao cadastrar cliente!");
-                        scan.nextLine();}
+                        }catch(Exception e){
+                            System.out.println("Erro ao cadastrar cliente!");
+                            scan.nextLine();
+                        }
                         
                         }
                         break;
@@ -156,8 +152,7 @@ public class App{
                     case 3:
                         // Contador de empréstimos 
                         int qtdEmprestimos = 0;
-                        
-                    
+                                            
                         // Entrada de usuário
                         String escolha;
                         int idUsu;
@@ -166,86 +161,86 @@ public class App{
                         scan.nextLine();
                         int codigo_e;
                         String dataEmprestimo;
+                                            
+                        try {
+                            boolean clienteEncontrado = false;
+                            boolean livroEncontrado = false;
+                            boolean possuiMaisDe3Emprestimos = false;
+                            boolean livroJaEmprestado = false;
+                                       
+                            System.out.println("==========================="); 
+                            System.out.println("          EMPRÉSTIMO      ");
+                            System.out.println("===========================");
                         
-                        
-                        
-                    try {
-                      boolean clienteEncontrado = false;
-                      boolean livroEncontrado = false;
-                      boolean possuiMaisDe3Emprestimos = false;
-                      boolean livroJaEmprestado = false;
-                     
-                      
-                  
-                      
-                        System.out.println("==========================="); 
-                        System.out.println("          EMPRÉSTIMO      ");
-                        System.out.println("===========================");
-                        
-                        System.out.println("Deseja pegar um livro emprestado? (s/n): ");
-                        escolha = scan.next().trim().toLowerCase();
-                        scan.nextLine();
-                        
-                        while (escolha.equals("sim") || escolha.equals("s")){
-                            System.out.println("Digite seu ID de cliente: ");
-                            idUsu = scan.nextInt();
+                            System.out.println("Deseja pegar um livro emprestado? (s/n): ");
+                            escolha = scan.next().trim().toLowerCase();
                             scan.nextLine();
                         
-                        // busca pelo cliente 
-                        Clientes clienteSelecionado = null;
-                        for (Clientes cliente : clientes) {
-                            if (cliente != null && cliente.getId() == (idUsu)) {
-                                clienteSelecionado = cliente;
-                                clienteEncontrado = true;
-                                break;
-                            }
-                        }
+                            while (escolha.equals("sim") || escolha.equals("s")){
+                                System.out.println("Digite seu ID de cliente: ");
+                                idUsu = scan.nextInt();
+                                scan.nextLine();
+                        
+                                // busca pelo cliente 
+                                Clientes clienteSelecionado = null;
+                                for (Clientes cliente : clientes) {
+                                    if (cliente != null && cliente.getId() == (idUsu)) {
+                                        clienteSelecionado = cliente;
+                                        clienteEncontrado = true;
+                                        break;
+                                    }
+                                }
                             if (!clienteEncontrado) {
                                 System.out.println("Cliente não cadastrado!");
-                            }  else {
+                            }  
+                            else {
                                 // Verifica se o cliente já possui um empréstimo ativo
                                 boolean clienteJaPossuiEmprestimoAtivo = false;
-                                for (Emprestimo emprestimo : emprestimos) {
-                                    if (emprestimo != null && emprestimo.getCliente().getId().equals(idUsu) && emprestimo.isEmprestimoAtivo()) {
+                                for (int x = 0; x < emprestimo.length; x++) {
+                                    if ((emprestimo[x] != null) && (emprestimo[x].getCliente().getId() == clienteSelecionado.getId())) {
                                         clienteJaPossuiEmprestimoAtivo = true;
                                         break;
                                     }
                                 }
                                 if (clienteJaPossuiEmprestimoAtivo) {
                                     System.out.println("Este cliente já possui um empréstimo ativo. Conclua antes de fazer outro empréstimo.");
-                                } else { System.out.println("Informe o código do livro que deseja pegar emprestado: ");
-                                codigo_e = scan.nextInt();
-                                scan.nextLine();
+                                } 
+                                else { 
+                                    System.out.println("Informe o código do livro que deseja pegar emprestado: ");
+                                    codigo_e = scan.nextInt();
+                                    scan.nextLine();
                                 
-                                //Busca pelo livro
-                                Livros livroSelecionado = null;
-                                for (Livros livro : livros){
-                                    if (livro != null && livro.getMostrarIdLivro() == codigo_e) {
-                                        livroSelecionado = livro;
-                                        livroEncontrado = true;
-                                        break;
+                                    //Busca pelo livro
+                                    Livros livroSelecionado = null;
+                                    for (Livros livro : livros){
+                                        if (livro != null && livro.getMostrarIdLivro() == codigo_e) {
+                                            livroSelecionado = livro;
+                                            livroEncontrado = true;
+                                            break;
+                                        }
                                     }
-                                }
                                 
-                            if(!livroEncontrado) {    
-                                System.out.println("Livro não encontrado.");
-                            } else if(!livroSelecionado.verificarDisponibilidade()) {
-                                System.out.println("O livro não possui exemplares disponíveis.");
-                            } else {
-                                    System.out.println("Informe a data de empréstimo (dd/mm/aaaa)");
-                                    dataEmprestimo = scan.nextLine();
+                                    if(!livroEncontrado) {    
+                                        System.out.println("Livro não encontrado.");
+                                    } 
+                                    else if(!livroSelecionado.verificarDisponibilidade()) {
+                                        System.out.println("O livro não possui exemplares disponíveis.");
+                                    }   
+                                    else {
+                                        System.out.println("Informe a data de empréstimo (dd/mm/aaaa)");
+                                        dataEmprestimo = scan.nextLine();
                             
-                            // Registra o novo empréstimo
-                            emprestimos[qtdEmprestimos++] = new Emprestimo(livroSelecionado, dataEmprestimo, clienteSelecionado);
-                            emprestimos[qtdEmprestimos - 1].realizarEmprestimo();
-                            System.out.println("Empréstimo realizado com sucesso!");
+                                        // Registra o novo empréstimo
+                                        emprestimo[qtdEmprestimos++] = new Emprestimo(livroSelecionado, dataEmprestimo, clienteSelecionado);
+                                        emprestimo[qtdEmprestimos - 1].realizarEmprestimo();
+                                        System.out.println("Empréstimo realizado com sucesso!");
                             
-                            //Atualiza quantidade de exemplares do livro e do cliente
-                            livroSelecionado.setPegarlivro(1);
-                            clienteSelecionado.setQuantidadeEmprestimos(1);
-                          }      
-                      }   
-                   }
+                                        //Atualiza quantidade de exemplares do livro e do cliente
+                                        livroSelecionado.setPegarlivro(1);
+                                        clienteSelecionado.setQuantidadeEmprestimos(1);
+                                    }           
+                                }   
+                            }
                 
                 System.out.println("Deseja realizar outro empréstimo? (s/n): ");
                 escolha = scan.next().toLowerCase();
@@ -256,6 +251,8 @@ public class App{
                         System.out.println("Erro na entrada de dados. Verifique e tente novamente.");
                         scan.nextLine(); // Limpa a entrada para evitar looping em caso de erro
                     }   
+                    System.out.println("\n");
+                    System.out.println("\n");
                     break;
                     
                     case 4:
@@ -322,6 +319,7 @@ public class App{
                         break;
 
                     case 5:
+                        System.out.println("\n");
                         livroExistente = false;
                         quantLivros = 0;
                         System.out.println("Deseja listar todos os livros, digite S ou N");
@@ -340,9 +338,11 @@ public class App{
                                 System.out.println("Mensagem de erro");
                             }
                         }
+                        System.out.println("\n");
                         break;
 
                     case 6:
+                        System.out.println("\n");
                         quantidade = 0;
                         usuarioExistente = false;
                         System.out.println("Deseja listar todos os usuários, digite S ou N");
@@ -363,6 +363,7 @@ public class App{
                                 System.out.println("Mensagem de erro");
                             }
                         }
+                        System.out.println("\n");
                         break;
 
                     case 7:
@@ -376,19 +377,20 @@ public class App{
                             }
                         }
                         break;
-
+                    case 8: 
+                        System.out.println("\n");
+                        System.out.println("Obrigado por usar nosso programa!");
+                        System.out.println("\n");
+                        break;
                     default:
+                        System.out.println("\n");
                         System.out.println("Selecione a opção correta!");
+                        System.out.println("\n");
                         break;
                 }
+            } while (opc_pri != 8);
 
-                // Caso o usuário escreva uma opção que não é desejada.
-                menuinicial();
-                System.out.println("Digite uma opção válida:");
-                opc_pri = scan.nextInt();
-            }
-
-        }
+        
     }
  }
 
