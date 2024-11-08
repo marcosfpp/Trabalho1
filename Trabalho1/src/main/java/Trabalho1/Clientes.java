@@ -55,8 +55,8 @@ public class Clientes {
         public String toString (){
             return "Nome:" + this.nome +"\n" +
                     "ID: " + this.numeroID + "\n" +
-                    "E-mail :" + this.email + "\n" +
-                    "Contato: " + this.telefone;
+                    "E-mail: " + this.email + "\n" +
+                    "Contato: " + this.telefone + "\n";
         }
 
         
