@@ -11,7 +11,7 @@ public class Clientes {
 
     
         //Criação do Construtor
-        Clientes(String nome, String email, int numeroID, String telefone){
+        Clientes(String nome, String email, int numeroID, int telefone){
             this.nome = nome;
             this.email = email;
             this.numeroID = numeroID;
@@ -25,6 +25,9 @@ public class Clientes {
         }
         public void setQuantidadeEmprestimos(int quantidade){
             this.qtd_Emprestada += quantidade;
+        }
+        public void setDiminuirQuantidade(int quantidade){
+            this.qtd_Emprestada -= quantidade;
         }
         public int getMostrarQuantidadeEmprestada(){
             return this.qtd_Emprestada;

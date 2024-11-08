@@ -6,14 +6,12 @@ private Clientes cliente;
 private Livros livro;
 private String dataEmprestimo;
 private String dataDevolucao;
-private boolean emprestimoAtivo = false;
 
 //Construtor principal para empréstimos ativos
 public Emprestimo(Livros livro, String dataEmprestimo, Clientes cliente) {
     this.cliente = cliente;
     this.livro = livro;
     this.dataEmprestimo = dataEmprestimo;
-    this.emprestimoAtivo = true;
     this.cliente.setQuantidadeEmprestimos(1);
 }
 
@@ -22,7 +20,6 @@ public Emprestimo(Livros livro, String dataEmprestimo, String dataDevolucao) {
     this.livro = livro;
     this.dataEmprestimo = dataEmprestimo;
     this.dataDevolucao = dataDevolucao;
-    this.emprestimoAtivo = false;
 }
 
 //Getters
@@ -42,18 +39,13 @@ public String getDataDevolucao() {
     return this.dataDevolucao;
 }
 
-public boolean isEmprestimoAtivo() {
-    return this.emprestimoAtivo;
-}
+
 //setters 
 public void setDataEmprestimo(String dataEmprestimo) {
     this.dataEmprestimo = dataEmprestimo;
 }
 public void setDataDevolucao(String dataDevolucao) {
     this.dataDevolucao = dataDevolucao;
-}
-public void finalizarEmprestimo() {
-    this.emprestimoAtivo = false;
 }
 //Métodos de empréstimo
 public void realizarEmprestimo() {

@@ -27,9 +27,8 @@ public class Livros {
         }
         return 0;
     }
-    public int setDevolverLivros(int quantidadeDevolvida){
-        this.numeroExemplares = this.numeroExemplares + quantidadeDevolvida;
-        return 0;
+    public void setDevolverLivros(int quantidadeDevolvida){
+        this.numeroExemplares += quantidadeDevolvida;
     }
     public int getMostrarIdLivro(){
         return this.idLivro;
