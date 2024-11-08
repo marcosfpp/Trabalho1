@@ -21,9 +21,9 @@ public class App {
         int c = -1;
         int em = -1;
 
-        Clientes[] clientes = new Clientes[5];
-        Emprestimo[] emprestimo = new Emprestimo[5];
-        Livros[] livros = new Livros[5];
+        Clientes[] clientes = new Clientes[50];
+        Emprestimo[] emprestimo = new Emprestimo[50];
+        Livros[] livros = new Livros[50];
 
         // Inicialização da estrutura de escolha do usuário.
         do {
