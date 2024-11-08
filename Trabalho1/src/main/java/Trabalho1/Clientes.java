@@ -4,7 +4,7 @@ public class Clientes {
     
     private String nome;
     private String email;
-    private String telefone;
+    private int telefone;
     private int numeroID;
     private int qtd_Emprestada;
  
@@ -36,7 +36,7 @@ public class Clientes {
             return this.email;
         }
 
-        public String getTelefone() {
+        public int getTelefone() {
             return this.telefone;
         }
         
