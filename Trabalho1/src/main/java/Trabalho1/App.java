@@ -1,6 +1,8 @@
 package Trabalho1;
 
 import java.util.Scanner;
+import java.io.FileWriter;
+import java.io.PrintWriter;
 
 public class App {
 
@@ -8,11 +10,7 @@ public class App {
     public static void main(String[] args) {
         Scanner scan = new Scanner(System.in);
 
-        boolean usuarioExistente, livroExistente;//variaveis para listagem
         int cadastClientes = 0; // quantidade de usuarios a serem cadastrados
-        int cadastLivros = 0; // quantidade de livros a serem cadastrados
-        int vagasClientes = 0; //auxiliar para verificação de espaço no array
-        int quantidade = 0; // quantidade de usuarios
         int quantLivros = 0; // quantidade de livros
         int qtdEmprestimos = 0;
         int idUsuario = 0;
@@ -38,7 +36,8 @@ public class App {
             System.out.println("5- LISTAGEM DE LIVROS");
             System.out.println("6- LISTAGEM DE USUÁRIOS");
             System.out.println("7- EMPRÉSTIMOS ATIVOS");
-            System.out.println("8- SAIR");
+            System.out.println("8- EXPORTAR DADOS");
+            System.out.println("9- SAIR");
             
             System.out.println("Digite a opção que deseja prosseguir:");
             opc_pri = scan.nextInt();
@@ -383,7 +382,37 @@ public class App {
                     }
                     System.out.println("\n");
                     break;
-                case 8:
+                case 8: 
+                    System.out.println("\n");
+                    System.out.println("===========================");
+                    System.out.println("         EXPORTAR DADOS     ");
+                    System.out.println("===========================");
+                    try{
+                        System.out.println("Deseja exportar os dados?, digite S ou N");
+                        opc_sec = scan.nextLine();
+                        System.out.println("\n");
+                        
+                        if ("S".equals(opc_sec) || "s".equals(opc_sec) || "Sim".equals(opc_sec) || "sim".equals(opc_sec)){
+                            FileWriter arquivo = new FileWriter("./arquivos/arquivo.txt", true);
+                            PrintWriter gravaArquivo = new PrintWriter(arquivo);
+
+                            for(int i = 0; i < livros.length; i++){
+                                gravaArquivo.println(livros[i]);
+                            }
+                            for(int j = 0; j < livros.length; j++){
+                                gravaArquivo.println(clientes[j]);
+                            }
+                            for(int k = 0; k < livros.length; k++){
+                                gravaArquivo.println(emprestimo[k]);
+                            }
+                            gravaArquivo.close();
+                            arquivo.close();
+                        }
+                    }catch(Exception e){
+                        System.out.println("Erro ao exportar os dados!");
+                    }
+                    break;
+                case 9:
                     System.out.println("\n");
                     System.out.println("Obrigado por usar nosso programa!");
                     System.out.println("\n");
@@ -394,7 +423,7 @@ public class App {
                     System.out.println("\n");
                     break;
             }
-        } while (opc_pri != 8);
+        } while (opc_pri != 9);
 
     }
 }
