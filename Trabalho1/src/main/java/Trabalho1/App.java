@@ -16,7 +16,7 @@ public class App {
         int idUsuario = 0;
         String nomeUsuario, emailUsuario;
         int contatoUsuario;
-        int opc_pri;
+        int opc_pri = 0;
         int l = -1;
         int c = -1;
         int em = -1;
@@ -47,8 +47,6 @@ public class App {
                 System.out.println("Erro na entrada");
             }
             System.out.println("\n");
-
-          
 
             switch (opc_pri) {
                 case 1:
@@ -410,13 +408,19 @@ public class App {
                             PrintWriter gravaArquivo = new PrintWriter(arquivo);
 
                             for(int i = 0; i < livros.length; i++){
-                                gravaArquivo.println(livros[i]);
+                                if (livros[i] != null){
+                                    gravaArquivo.println(livros[i]);
+                                }
                             }
-                            for(int j = 0; j < livros.length; j++){
-                                gravaArquivo.println(clientes[j]);
+                            for(int j = 0; j < clientes.length; j++){
+                                if (clientes[j] != null){
+                                    gravaArquivo.println(clientes[j]);
+                                }
                             }
-                            for(int k = 0; k < livros.length; k++){
-                                gravaArquivo.println(emprestimo[k]);
+                            for(int k = 0; k < emprestimo.length; k++){
+                                if (emprestimo[k] != null){
+                                    gravaArquivo.println(emprestimo[k]);
+                                }
                             }
                             gravaArquivo.close();
                             arquivo.close();
