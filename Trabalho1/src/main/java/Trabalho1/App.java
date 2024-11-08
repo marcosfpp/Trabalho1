@@ -396,7 +396,7 @@ public class App {
                         System.out.println("\n");
                         
                         if ("S".equals(opc_sec) || "s".equals(opc_sec) || "Sim".equals(opc_sec) || "sim".equals(opc_sec)){
-                            FileWriter arquivo = new FileWriter("./arquivos/arquivo.txt", true);
+                            FileWriter arquivo = new FileWriter("./arquivos/arquivo.txt");
                             PrintWriter gravaArquivo = new PrintWriter(arquivo);
 
                             for(int i = 0; i < livros.length; i++){
