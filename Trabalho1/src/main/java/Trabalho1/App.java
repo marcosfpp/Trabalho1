@@ -156,6 +156,8 @@ public class App {
                         System.out.println("Deseja pegar um livro emprestado? (s/n): ");
                         String escolha = scan.next().trim().toLowerCase();
                         scan.nextLine();
+                        
+                        int qtdEmprestimos = 0;
 
                         while (escolha.equals("sim") || escolha.equals("s")) {
                             System.out.println("Digite seu ID de cliente: ");
@@ -164,29 +166,57 @@ public class App {
 
                             // busca pelo cliente 
                             Clientes clienteSelecionado = null;
-                            for (Clientes cliente : clientes) {
-                                if (cliente != null && cliente.getId() == idUsu) {
-                                    clienteSelecionado = cliente;
+                            for (int i =  0; i < clientes.length; i++) {
+                                if (clientes[i] != null && clientes[i].getId() == idUsu) {
+                                    clienteSelecionado = clientes[i];
                                     break;
                                 }
                             }
+                            // caso cliente não seja encontrado
                             if (clienteSelecionado == null) {
                                 System.out.println("Cliente não cadastrado!");
                                 break;
                             } 
+                            // verificação se o cliente tem empréstimo ativo, atribuindo valor true a variavel emprestimoAtivo caso tenha 
                             boolean emprestimoAtivo = false;
-                            for (int i = 0; i < emprestimo.length; i++){
-                                if (emprestimo[i] != null && emprestimo[i].getCliente().getId() == clienteSelecionado.getId()){
+                            for (int e = 0; e < emprestimo.length; e++){
+                                if (emprestimo[e] != null && emprestimo[e].getCliente().getId() == clienteSelecionado.getId()){
                                     emprestimoAtivo = true;
                                     break;
                                 }     
                             }
+                            // caso cliente possua emprestimo ativo, a variavel emprestimoAtivo será true e se encaixara nesse condição
                             if (emprestimoAtivo){
                                 System.out.println("O cliente possui emprestimo ativo!");
                             }
+                            // caso não possua, entrara nesta dondição
                             else {
                                 System.out.println("Digite o código do livro que deseja: ");
                                 int codigoLivro = scan.nextInt();
+                                scan.nextLine();
+                                
+                                Livros livroSelecionado = null;
+                                for (int li = 0; li < livros.length; li++){
+                                    if(livros[li]!= null && livros[li].getMostrarIdLivro() == codigoLivro){
+                                        livroSelecionado = livros[li];
+                                        break;
+                                    }
+                                }
+                                if (livroSelecionado == null){
+                                    System.out.println("Livro nao encontrado na base de dados.");
+                                }
+                                else if (!livroSelecionado.verificarDisponibilidade()){
+                                    System.out.println("Livro indisponivel para emprestimo!");
+                                }
+                                else {
+                                    System.out.println("Digite a data de emprestimo(dd/mm/aaaa): ");
+                                    String dataEmprestimo = scan.nextLine();
+                                    emprestimo[qtdEmprestimos++] = new Emprestimo(livroSelecionado, dataEmprestimo, clienteSelecionado);
+                                    livroSelecionado.setPegarlivro(1);
+                                    clienteSelecionado.setQuantidadeEmprestimos(1);
+                                    System.out.println("Emprestimo realizado com sucesso!");
+                                }
+                                
                             }
 
                             System.out.println("Deseja realizar outro empréstimo? (s/n): ");
@@ -198,8 +228,8 @@ public class App {
                         System.out.println("Erro na entrada de dados. Verifique e tente novamente.");
                         scan.nextLine(); // Limpa a entrada para evitar looping em caso de erro
                     }
-                    System.out.println("\n");
-                    System.out.println("\n");
+                    System.out.println("\n\n");
+                  
                     break;
 
                 case 4:
@@ -267,8 +297,6 @@ public class App {
 
                 case 5:
                     System.out.println("\n");
-                    livroExistente = false;
-                    quantLivros = 0;
                     System.out.println("Deseja listar todos os livros, digite S ou N");
                     opc_sec = scan.nextLine();
                     if ("S".equals(opc_sec) || "s".equals(opc_sec) || "Sim".equals(opc_sec) || "sim".equals(opc_sec)) {
@@ -276,7 +304,6 @@ public class App {
                             for (int i = 0; i < livros.length; i++) {
                                 if (livros[i] != null) {
                                     livroExistente = true;
-                                    quantLivros++;
                                     System.out.println(livros[i].toString());
                                 }
                             }
@@ -289,17 +316,14 @@ public class App {
 
                 case 6:
                     System.out.println("\n");
-                    quantidade = 0;
-                    usuarioExistente = false;
                     System.out.println("Deseja listar todos os usuários, digite S ou N");
                     opc_sec = scan.nextLine();
                     if ("S".equals(opc_sec) || "s".equals(opc_sec) || "Sim".equals(opc_sec) || "sim".equals(opc_sec)) {
                         try {
                             for (int i = 0; i < clientes.length; i++) {
                                 if (clientes[i] != null) {
-                                    usuarioExistente = true;
                                     System.out.println(clientes[i].toString());
-                                    quantidade++;
+                            
                                     System.out.println("\n");
                                             
                                 }
@@ -317,7 +341,12 @@ public class App {
                     opc_sec = scan.nextLine();
                     if ("S".equals(opc_sec) || "s".equals(opc_sec) || "Sim".equals(opc_sec) || "sim".equals(opc_sec)) {
                         try {
-
+                            for (int i = 0; i < emprestimo.length; i++){
+                                if(emprestimo[i] != null){
+                                    System.out.println(emprestimo[i].toString());
+                                    System.out.println("\n");
+                                }
+                            }
                         } catch (Exception e) {
                             System.out.println("Mensagem de erro");
                         }

@@ -16,18 +16,14 @@ public class Livros {
     }
     
     public boolean verificarDisponibilidade(){
-        if (this.numeroExemplares != 0){
-            return true;
-        }else {
-            return false;
-        }
+        return this.numeroExemplares > 0;
     }
-    public int setPegarlivro(int numeroExemplares){
-        if (this.numeroExemplares >= 0){
-            System.out.println("Não possui exemplares disponíveis.");
+    public int setPegarlivro(int quantidade){
+        if (this.numeroExemplares >= quantidade){
+            this.numeroExemplares -= quantidade;
         }
         else {
-            this.numeroExemplares--;
+            System.out.println("Quantidade de exemplares indisponível");
         }
         return 0;
     }
