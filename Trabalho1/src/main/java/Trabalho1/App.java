@@ -15,21 +15,13 @@ public class App {
         int quantidade = 0; // quantidade de usuarios
         int quantLivros = 0; // quantidade de livros
         int qtdEmprestimos = 0;
-        int sobraLivros = 0;
         int idUsuario = 0;
-        String nomeUsuario, emailUsuario, contatoUsuario;
-        int cod_livro;
+        String nomeUsuario, emailUsuario;
+        int contatoUsuario;
         int opc_pri;
         int l = -1;
         int c = -1;
         int em = -1;
-
-        //Inserir os verificadores aqui
-        //Lógica de devolução
-        boolean v_codigousuario = false;
-        boolean v_codigolivro = false;
-        boolean v_usu_livro = false;
-        //
 
         Clientes[] clientes = new Clientes[5];
         Emprestimo[] emprestimo = new Emprestimo[5];
@@ -58,10 +50,10 @@ public class App {
                     try {
                         System.out.println("Deseja cadastrar um livro, digite S ou N");
                         String opc_sec = scan.nextLine();
-                        
-                        while ("S".equals(opc_sec) || "s".equals(opc_sec) || "Sim".equals(opc_sec) || "sim".equals(opc_sec)){
+
+                        while ("S".equals(opc_sec) || "s".equals(opc_sec) || "Sim".equals(opc_sec) || "sim".equals(opc_sec)) {
                             // verifica se a arrray esta cheia para cadastro de livros
-                            if (l >= livros.length - 1){
+                            if (l >= livros.length - 1) {
                                 System.out.println("Nao foi possivel cadastrar mais livros! Espaço insuficiente!");
                                 scan.nextLine();
                                 break;
@@ -94,16 +86,16 @@ public class App {
                             int idLivro = l + 1;
                             Livros informacoesLivro = new Livros(idLivro, nomeLivro, nomeAutor, anoPublicacao, numeroExemplares);
                             livros[quantLivros] = informacoesLivro;
-                            
+
                             System.out.println("Deseja continuar cadastrando? ");
                             opc_sec = scan.nextLine();
                             System.out.println("\n\n");
                         }
-                    }catch (Exception e){
+                    } catch (Exception e) {
                         System.out.println("Erro ao cadastrar livro!");
                         scan.nextLine();
                     }
-                    
+
                     System.out.println("\n\n");
                     break;
 
@@ -115,7 +107,7 @@ public class App {
                         String opc_sec = scan.nextLine();
                         while ("S".equals(opc_sec) || "s".equals(opc_sec) || "Sim".equals(opc_sec) || "sim".equals(opc_sec)) {
                             // valida se tem espaço na array 
-                            if (c >= livros.length - 1 ){
+                            if (c >= livros.length - 1) {
                                 System.out.println("Nao foi possivel cadastrar mais usuarios! Espaço insuficiente!");
                                 scan.nextLine();
                                 break;
@@ -126,21 +118,22 @@ public class App {
                                     cadastClientes++;
                                 }
                             }
-                                                                                         
+
                             System.out.println("Digite o nome do usuário:");
                             nomeUsuario = scan.nextLine();
-                            
+
                             System.out.println("Digite o e-mail do usuário:");
                             emailUsuario = scan.nextLine();
-                                    
+
                             System.out.println("Digite o número para contato");
-                            contatoUsuario = scan.nextLine();
-                                    
-                            idUsuario = c + 1;                        
-                            clientes[cadastClientes] = new Clientes(nomeUsuario, emailUsuario, idUsuario, contatoUsuario);                        
-                            
+                            contatoUsuario = scan.nextInt();
+                            scan.nextLine();
+
+                            idUsuario = c + 1;
+                            clientes[cadastClientes] = new Clientes(nomeUsuario, emailUsuario, idUsuario, contatoUsuario);
+
                             System.out.println("Deseja cadastrar outro cliente? ");
-                            opc_sec = scan.nextLine();                            
+                            opc_sec = scan.nextLine();
                         }
                     } catch (Exception e) {
                         System.out.println("Erro ao cadastrar cliente!");
@@ -158,21 +151,21 @@ public class App {
                         System.out.println("Deseja pegar um livro emprestado? (s/n): ");
                         String escolha = scan.next().trim().toLowerCase();
                         scan.nextLine();
-                        
+
                         while (escolha.equals("sim") || escolha.equals("s")) {
-                            if (c >= livros.length - 1 ){
+                            if (c >= livros.length - 1) {
                                 System.out.println("Nao foi possivel cadastrar mais usuarios! Espaço insuficiente!");
                                 scan.nextLine();
                                 break;
                             }
-                            
+
                             System.out.println("Digite seu ID de cliente: ");
                             int idUsu = scan.nextInt();
                             scan.nextLine();
 
                             // busca pelo cliente 
                             Clientes clienteSelecionado = null;
-                            for (int i =  0; i < clientes.length; i++) {
+                            for (int i = 0; i < clientes.length; i++) {
                                 if (clientes[i] != null && clientes[i].getId() == idUsu) {
                                     clienteSelecionado = clientes[i];
                                     break;
@@ -182,45 +175,42 @@ public class App {
                             if (clienteSelecionado == null) {
                                 System.out.println("Cliente não cadastrado!");
                                 break;
-                            } 
+                            }
                             // verificação se o cliente tem empréstimo ativo, atribuindo valor true a variavel emprestimoAtivo caso tenha 
                             boolean emprestimoAtivo = false;
-                            for (int e = 0; e < emprestimo.length; e++){
-                                if (emprestimo[e] != null && emprestimo[e].getCliente().getId() == clienteSelecionado.getId()){
+                            for (int e = 0; e < emprestimo.length; e++) {
+                                if (emprestimo[e] != null && emprestimo[e].getCliente().getId() == clienteSelecionado.getId()) {
                                     emprestimoAtivo = true;
                                     break;
-                                }     
+                                }
                             }
                             // caso cliente possua emprestimo ativo, a variavel emprestimoAtivo será true e se encaixara nesse condição
-                            if (emprestimoAtivo){
+                            if (emprestimoAtivo) {
                                 System.out.println("O cliente possui emprestimo ativo!");
-                            }
-                            // caso não possua, entrara nesta dondição
+                            } // caso não possua, entrara nesta condição
                             else {
                                 System.out.println("Digite o código do livro que deseja: ");
                                 int codigoLivro = scan.nextInt();
                                 scan.nextLine();
-                                
+
                                 Livros livroSelecionado = null;
-                                for (int li = 0; li < livros.length; li++){
-                                    if(livros[li]!= null && livros[li].getMostrarIdLivro() == codigoLivro){
+                                for (int li = 0; li < livros.length; li++) {
+                                    if (livros[li] != null && livros[li].getMostrarIdLivro() == codigoLivro) {
                                         livroSelecionado = livros[li];
                                         break;
                                     }
                                 }
-                                if (livroSelecionado == null){
+                                if (livroSelecionado == null) {
                                     System.out.println("Livro nao encontrado na base de dados.");
-                                }
-                                else if (!livroSelecionado.verificarDisponibilidade()){
+                                } else if (!livroSelecionado.verificarDisponibilidade()) {
                                     System.out.println("Livro indisponivel para emprestimo!");
-                                }
-                                else {
-                                    if(em > emprestimo.length -1){
+                                } else {
+                                    if (em > emprestimo.length - 1) {
                                         System.out.println("Nao foi possivel realizar mais emprestimos! Espaço insuficiente em nosso sistema!");
-                                         scan.nextLine();
+                                        scan.nextLine();
                                     }
                                     em++;
-                                    
+
                                     for (int i = 0; i < clientes.length; i++) {
                                         if (clientes[i] != null) {
                                             qtdEmprestimos++;
@@ -233,7 +223,7 @@ public class App {
                                     clienteSelecionado.setQuantidadeEmprestimos(1);
                                     System.out.println("Emprestimo realizado com sucesso!");
                                 }
-                                
+
                             }
 
                             System.out.println("Deseja realizar outro empréstimo? (s/n): ");
@@ -246,76 +236,67 @@ public class App {
                         scan.nextLine(); // Limpa a entrada para evitar looping em caso de erro
                     }
                     System.out.println("\n\n");
-                  
+
                     break;
 
                 case 4:
-                    System.out.println("Deseja fazer a devolução de algum livro, digite S ou N");
-                    String opc_sec = scan.nextLine();
-                    if ("S".equals(opc_sec) || "s".equals(opc_sec) || "Sim".equals(opc_sec) || "sim".equals(opc_sec)) {
-                        try {
+                    try {
+                        System.out.println("Deseja fazer a devolução de algum livro, digite S ou N");
+                        String opc_sec = scan.nextLine();
 
+                        // enquanto o usuario digitar uma das opções abaixo continuará rodando o código
+                        while ("S".equals(opc_sec) || "s".equals(opc_sec) || "Sim".equals(opc_sec) || "sim".equals(opc_sec)) {
                             System.out.println("Digite seu id de cliente:");
                             idUsuario = scan.nextInt();
-                            scan.nextLine();
-                            System.out.println("Digite o id do livro que deseja devolver:");
-                            cod_livro = scan.nextInt();
-                            scan.nextLine();
 
+                            // Busca pelo cliente, quando achar atribuirá o valor da respectiva posição para clienteSelecionado, tornando-se então não nula
+                            Clientes clienteSelecionado = null;
                             for (int i = 0; i < clientes.length; i++) {
-                                if (clientes[i] != null && clientes[i].getId() == idUsuario && livros[i].getMostrarIdLivro() == cod_livro) {
-                                    v_codigousuario = true; // Validação
-                                    if (clientes[i].getMostrarQuantidadeEmprestada() > 0) {
-                                        v_usu_livro = true;
-                                        for (int j = 0; j < emprestimo.length; j++) {
-                                            if (emprestimo[j] != null) { // Validação
-                                                System.out.println("O usuario: " + clientes[j].getNome() + " está com o livro: " + livros[j].getMostrarNome());
-                                                System.out.println(clientes[j].getNome() + " deseja devolver o livro acima? S ou N");
-                                                opc_sec = scan.nextLine();
-                                                if ("S".equals(opc_sec) || "s".equals(opc_sec) || "Sim".equals(opc_sec) || "sim".equals(opc_sec)) {
-                                                    for (int k = 0; k < emprestimo.length; k++) {
-                                                        if (emprestimo[k] != null) {
-                                                            if (emprestimo[k].getCliente().getId() == idUsuario && emprestimo[k].getLivro().getMostrarIdLivro() == cod_livro) {
-                                                                emprestimo[k].setDataEmprestimo(null);
-                                                                emprestimo[k].verificarDisponibilidade();
-                                                                emprestimo[k].finalizarEmprestimo();
-                                                                emprestimo[k].getLivro();//Criar um get para aumentar a quantidade de livro / para o livro ficar disponível;
-                                                                //emprestimo[k].  fazer um set para retornar o emprestimo ativo para desativado 1 to 0;
-                                                                System.out.println(clientes[j].getNome() + " obrigado por devolver o livro " + livros[k].getMostrarNome());
-                                                                //Aqui vou dar outro sout mostrando a data de dev e data de emp!!!;
-                                                            }
-                                                        }
-                                                    }
-                                                }
-                                            }
-                                        }
-                                    } else {
-                                        System.out.println("Este cliente não possui livros emprestados.");
-                                    }
+                                if (clientes[i] != null && clientes[i].getId() == idUsuario) {
+                                    clienteSelecionado = clientes[i];
+                                    break;
                                 }
                             }
-
-                            // Se o cliente não foi encontrado
-                            if (!v_codigousuario) {
+                            // Se o cliente não foi encontrado, não será atribuido valor então cáira aqui, imprimira a mensagem e não rodará o código
+                            if (clienteSelecionado == null) {
                                 System.out.println("Cliente não encontrado.");
+                            } else {
+                                //validar para ver se o cliente realmente possui empréstimos, seguindo a mesma lógica anterior, quando for encontrado a variável emmprestimoAtivo será true
+                                boolean emprestimoAtivo = false;
+                                int posicaoEmprestimo = -1; // essa variável auxiliar é para armazenar a posição encontrada da array de emprestimo, para assim que a devolução ocorrer deixar a posição da array nula 
+                                for (int j = 0; j < emprestimo.length; j++) {
+                                    if ((emprestimo[j] != null) && (emprestimo[j].getCliente().getId() == clienteSelecionado.getId())) {
+                                        emprestimoAtivo = true;
+                                        posicaoEmprestimo = j;
+                                        break;
+                                    }
+                                }
+                                //caso usuario não possua empréstimos ativos, não tem o que devolver 
+                                if (!emprestimoAtivo) {
+                                    System.out.println("O cliente nao possui emprestimos ativos, nao ha nada para devolver!");
+                                } else {
+                                    // se sastifez todas as condições anteriores para encontrar o livro, então é só alterar os campos.
+                                    Livros livroEmprestado = emprestimo[posicaoEmprestimo].getLivro(); //armazena na variavel livroEmprestado, do tipo Livros, o livro emprestado presente na array emprestimo na posição encontrada anteriormente
+                                    livroEmprestado.setDevolverLivros(1); //devolve o livro incrementando através deste método, devida variável ser do tipo livros 
+                                    clienteSelecionado.setDiminuirQuantidade(1);//diminui a quantiade de emprestimos atribuidos ao cliente, permitindo com que ele posso realizar mais emprestimos
+                                    emprestimo[posicaoEmprestimo] = null; // deixa a posição do antigo empréstimo nula, permitindo mais empréstimos
+
+                                    System.out.println("Devolucao concluida!");
+                                }
                             }
-
-                            // Se o cliente não está com o livro específico
-                            if (!v_usu_livro) {
-                                System.out.println("Este cliente não está com o livro desejado.");
-                            }
-
-                        } catch (Exception e) {
-                            System.out.println("!!!! ERRO NA BASE DE DADOS !!!");
-
+                            System.out.println("Deseja realizar mais um emprestimo? S/N ");
+                            opc_sec = scan.nextLine();
+                            scan.nextLine();
                         }
+                    } catch (Exception e) {
+                        System.out.println("!!!! ERRO NA BASE DE DADOS !!!");
                     }
                     break;
 
                 case 5:
                     System.out.println("\n");
                     System.out.println("Deseja listar todos os livros, digite S ou N");
-                    opc_sec = scan.nextLine();
+                    String opc_sec = scan.nextLine();
                     if ("S".equals(opc_sec) || "s".equals(opc_sec) || "Sim".equals(opc_sec) || "sim".equals(opc_sec)) {
                         try {
                             for (int i = 0; i < livros.length; i++) {
@@ -339,7 +320,7 @@ public class App {
                             for (int i = 0; i < clientes.length; i++) {
                                 if (clientes[i] != null) {
                                     System.out.println(clientes[i].toString());
-                                    System.out.println("\n");        
+                                    System.out.println("\n");
                                 }
                             }
 
@@ -355,8 +336,8 @@ public class App {
                     opc_sec = scan.nextLine();
                     if ("S".equals(opc_sec) || "s".equals(opc_sec) || "Sim".equals(opc_sec) || "sim".equals(opc_sec)) {
                         try {
-                            for (int i = 0; i < emprestimo.length; i++){
-                                if(emprestimo[i] != null){
+                            for (int i = 0; i < emprestimo.length; i++) {
+                                if (emprestimo[i] != null) {
                                     System.out.println(emprestimo[i].toString());
                                     System.out.println("\n");
                                 }
