@@ -15,7 +15,7 @@ public class App {
         int qtdEmprestimos = 0;
         int idUsuario = 0;
         String nomeUsuario, emailUsuario;
-        int contatoUsuario;
+        String contatoUsuario;
         int opc_pri = 0;
         int l = -1;
         int c = -1;
@@ -139,7 +139,7 @@ public class App {
                             emailUsuario = scan.nextLine();
 
                             System.out.println("Digite o número para contato");
-                            contatoUsuario = scan.nextInt();
+                            contatoUsuario = scan.nextLine();
                             scan.nextLine();
 
                             idUsuario = c + 1;

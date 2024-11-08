@@ -4,17 +4,18 @@ public class Clientes {
     
     private String nome;
     private String email;
-    private int telefone;
+    private String telefone;
     private int numeroID;
     private int qtd_Emprestada;
  
 
     
         //Criação do Construtor
-        Clientes(String nome, String email, int numeroID, int telefone){
+        Clientes(String nome, String email, int numeroID, String telefone){
             this.nome = nome;
             this.email = email;
             this.numeroID = numeroID;
+            this.telefone = telefone;
         }
         
 
@@ -36,7 +37,7 @@ public class Clientes {
             return this.email;
         }
 
-        public int getTelefone() {
+        public String getTelefone() {
             return this.telefone;
         }
         
