@@ -52,7 +52,7 @@ public class Livros {
                "Nome: " + this.nomeLivro + "\n" +
                "Autor(es): " + this.nomeAutor + "\n" +
                "Quantiddade de paginas: " + this.anoPublicacao + "\n" +
-               "Numero de exemplares: " + this.numeroExemplares + "\n";
+               "Numero de exemplares disponíveis: " + this.numeroExemplares + "\n";
     }
     
 }

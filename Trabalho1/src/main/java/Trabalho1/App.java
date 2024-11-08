@@ -14,6 +14,7 @@ public class App {
         int vagasClientes = 0; //auxiliar para verificação de espaço no array
         int quantidade = 0; // quantidade de usuarios
         int quantLivros = 0; // quantidade de livros
+        int qtdEmprestimos = 0;
         int sobraLivros = 0;
         int idUsuario = 0;
         String nomeUsuario, emailUsuario, contatoUsuario;
@@ -21,6 +22,7 @@ public class App {
         int opc_pri;
         int l = -1;
         int c = -1;
+        int em = -1;
 
         //Inserir os verificadores aqui
         //Lógica de devolução
@@ -118,7 +120,7 @@ public class App {
                                 scan.nextLine();
                                 break;
                             }
-                            l++;
+                            c++;
                             for (int i = 0; i < clientes.length; i++) {
                                 if (clientes[i] != null) {
                                     cadastClientes++;
@@ -157,9 +159,13 @@ public class App {
                         String escolha = scan.next().trim().toLowerCase();
                         scan.nextLine();
                         
-                        int qtdEmprestimos = 0;
-
                         while (escolha.equals("sim") || escolha.equals("s")) {
+                            if (c >= livros.length - 1 ){
+                                System.out.println("Nao foi possivel cadastrar mais usuarios! Espaço insuficiente!");
+                                scan.nextLine();
+                                break;
+                            }
+                            
                             System.out.println("Digite seu ID de cliente: ");
                             int idUsu = scan.nextInt();
                             scan.nextLine();
@@ -209,9 +215,20 @@ public class App {
                                     System.out.println("Livro indisponivel para emprestimo!");
                                 }
                                 else {
+                                    if(em > emprestimo.length -1){
+                                        System.out.println("Nao foi possivel realizar mais emprestimos! Espaço insuficiente em nosso sistema!");
+                                         scan.nextLine();
+                                    }
+                                    em++;
+                                    
+                                    for (int i = 0; i < clientes.length; i++) {
+                                        if (clientes[i] != null) {
+                                            qtdEmprestimos++;
+                                        }
+                                    }
                                     System.out.println("Digite a data de emprestimo(dd/mm/aaaa): ");
                                     String dataEmprestimo = scan.nextLine();
-                                    emprestimo[qtdEmprestimos++] = new Emprestimo(livroSelecionado, dataEmprestimo, clienteSelecionado);
+                                    emprestimo[qtdEmprestimos] = new Emprestimo(livroSelecionado, dataEmprestimo, clienteSelecionado);
                                     livroSelecionado.setPegarlivro(1);
                                     clienteSelecionado.setQuantidadeEmprestimos(1);
                                     System.out.println("Emprestimo realizado com sucesso!");
@@ -303,7 +320,6 @@ public class App {
                         try {
                             for (int i = 0; i < livros.length; i++) {
                                 if (livros[i] != null) {
-                                    livroExistente = true;
                                     System.out.println(livros[i].toString());
                                 }
                             }
@@ -323,9 +339,7 @@ public class App {
                             for (int i = 0; i < clientes.length; i++) {
                                 if (clientes[i] != null) {
                                     System.out.println(clientes[i].toString());
-                            
-                                    System.out.println("\n");
-                                            
+                                    System.out.println("\n");        
                                 }
                             }
 
