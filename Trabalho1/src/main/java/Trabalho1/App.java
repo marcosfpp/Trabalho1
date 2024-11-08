@@ -274,7 +274,7 @@ public class App{
                                 for (int i = 0; i < clientes.length; i++) {
                                     if (clientes[i] != null && clientes[i].getId() == idUsuario && livros[i].getMostrarIdLivro() == cod_livro) {
                                         v_codigousuario = true; // Validação
-                                        if (clientes[i].getMostrarQuantidadeEmprestada() > 0) { // Verifica se o cliente tem livros emprestados
+                                        if (clientes[i].getMostrarQuantidadeEmprestada() > 0) {
                                             v_usu_livro = true;
                                             for (int j = 0; j < emprestimo.length; j++) {
                                                 if (emprestimo[j] != null) { // Validação
