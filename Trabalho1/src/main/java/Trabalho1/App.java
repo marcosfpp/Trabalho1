@@ -39,17 +39,25 @@ public class App {
             System.out.println("6- LISTAGEM DE USUÁRIOS");
             System.out.println("7- EMPRÉSTIMOS ATIVOS");
             System.out.println("8- SAIR");
-
+            
             System.out.println("Digite a opção que deseja prosseguir:");
             opc_pri = scan.nextInt();
             scan.nextLine();
+            System.out.println("\n");
+
+          
 
             switch (opc_pri) {
                 case 1:
                     System.out.println("\n");
+                    System.out.println("===========================");
+                    System.out.println("         CADASTRO LIVROS      ");
+                    System.out.println("===========================");
                     try {
                         System.out.println("Deseja cadastrar um livro, digite S ou N");
                         String opc_sec = scan.nextLine();
+                        System.out.println("\n");
+
 
                         while ("S".equals(opc_sec) || "s".equals(opc_sec) || "Sim".equals(opc_sec) || "sim".equals(opc_sec)) {
                             // verifica se a arrray esta cheia para cadastro de livros
@@ -101,10 +109,14 @@ public class App {
 
                 case 2:
                     System.out.println("\n");
-                    System.out.println("\n");
+                    System.out.println("===========================");
+                    System.out.println("         CADASTRO USUÁRIOS      ");
+                    System.out.println("===========================");
                     try {
                         System.out.println("Deseja cadastrar um usuário, digite S ou N");
                         String opc_sec = scan.nextLine();
+                        System.out.println("\n");
+
                         while ("S".equals(opc_sec) || "s".equals(opc_sec) || "Sim".equals(opc_sec) || "sim".equals(opc_sec)) {
                             // valida se tem espaço na array 
                             if (c >= livros.length - 1) {
@@ -143,14 +155,16 @@ public class App {
                     break;
 
                 case 3:
-                    try {
+                        System.out.println("\n");
                         System.out.println("===========================");
                         System.out.println("          EMPRÉSTIMO      ");
                         System.out.println("===========================");
+                    try {
 
                         System.out.println("Deseja pegar um livro emprestado? (s/n): ");
                         String escolha = scan.next().trim().toLowerCase();
                         scan.nextLine();
+                        System.out.println("\n");
 
                         while (escolha.equals("sim") || escolha.equals("s")) {
                             if (c >= livros.length - 1) {
@@ -235,14 +249,19 @@ public class App {
                         System.out.println("Erro na entrada de dados. Verifique e tente novamente.");
                         scan.nextLine(); // Limpa a entrada para evitar looping em caso de erro
                     }
+                    
                     System.out.println("\n\n");
-
                     break;
 
                 case 4:
+                    System.out.println("\n");
+                    System.out.println("===========================");
+                    System.out.println("         DEVOLUÇÃO      ");
+                    System.out.println("===========================");
                     try {
                         System.out.println("Deseja fazer a devolução de algum livro, digite S ou N");
                         String opc_sec = scan.nextLine();
+                        System.out.println("\n");
 
                         // enquanto o usuario digitar uma das opções abaixo continuará rodando o código
                         while ("S".equals(opc_sec) || "s".equals(opc_sec) || "Sim".equals(opc_sec) || "sim".equals(opc_sec)) {
@@ -284,19 +303,24 @@ public class App {
                                     System.out.println("Devolucao concluida!");
                                 }
                             }
-                            System.out.println("Deseja realizar mais um emprestimo? S/N ");
+                            System.out.println("Deseja realizar mais uma devolução? S/N ");
                             opc_sec = scan.nextLine();
                             scan.nextLine();
                         }
                     } catch (Exception e) {
                         System.out.println("!!!! ERRO NA BASE DE DADOS !!!");
                     }
+                    System.out.println("\n");
                     break;
 
                 case 5:
                     System.out.println("\n");
+                    System.out.println("===========================");
+                    System.out.println("         LISTAGEM LIVROS      ");
+                    System.out.println("===========================");
                     System.out.println("Deseja listar todos os livros, digite S ou N");
                     String opc_sec = scan.nextLine();
+                    System.out.println("\n");
                     if ("S".equals(opc_sec) || "s".equals(opc_sec) || "Sim".equals(opc_sec) || "sim".equals(opc_sec)) {
                         try {
                             for (int i = 0; i < livros.length; i++) {
@@ -313,12 +337,17 @@ public class App {
 
                 case 6:
                     System.out.println("\n");
+                    System.out.println("===========================");
+                    System.out.println("         CADASTRO USUARIOS      ");
+                    System.out.println("===========================");
                     System.out.println("Deseja listar todos os usuários, digite S ou N");
                     opc_sec = scan.nextLine();
+                    System.out.println("\n");
                     if ("S".equals(opc_sec) || "s".equals(opc_sec) || "Sim".equals(opc_sec) || "sim".equals(opc_sec)) {
                         try {
                             for (int i = 0; i < clientes.length; i++) {
                                 if (clientes[i] != null) {
+                                    System.out.println("\n");
                                     System.out.println(clientes[i].toString());
                                     System.out.println("\n");
                                 }
@@ -332,12 +361,18 @@ public class App {
                     break;
 
                 case 7:
+                    System.out.println("\n");
+                    System.out.println("===========================");
+                    System.out.println("         EMPRESTIMOS ATIVOS     ");
+                    System.out.println("===========================");
                     System.out.println("Deseja consultar os empréstimos ativos, digite S ou N");
                     opc_sec = scan.nextLine();
+                    System.out.println("\n");
                     if ("S".equals(opc_sec) || "s".equals(opc_sec) || "Sim".equals(opc_sec) || "sim".equals(opc_sec)) {
                         try {
                             for (int i = 0; i < emprestimo.length; i++) {
                                 if (emprestimo[i] != null) {
+                                    System.out.println("\n");
                                     System.out.println(emprestimo[i].toString());
                                     System.out.println("\n");
                                 }
@@ -346,6 +381,7 @@ public class App {
                             System.out.println("Mensagem de erro");
                         }
                     }
+                    System.out.println("\n");
                     break;
                 case 8:
                     System.out.println("\n");
