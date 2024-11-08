@@ -148,92 +148,45 @@ public class App {
                     break;
 
                 case 3:
-                    // Contador de empréstimos 
-                    int qtdEmprestimos = 0;
-
-                    // Entrada de usuário
-                    String escolha;
-                    int idUsu;
-                    System.out.println("Digite seu ID de cliente: ");
-                    idUsu = scan.nextInt();
-                    scan.nextLine();
-                    int codigo_e;
-                    String dataEmprestimo;
-
                     try {
-                        boolean clienteEncontrado = false;
-                        boolean livroEncontrado = false;
-                        boolean possuiMaisDe3Emprestimos = false;
-                        boolean livroJaEmprestado = false;
-
                         System.out.println("===========================");
                         System.out.println("          EMPRÉSTIMO      ");
                         System.out.println("===========================");
 
                         System.out.println("Deseja pegar um livro emprestado? (s/n): ");
-                        escolha = scan.next().trim().toLowerCase();
+                        String escolha = scan.next().trim().toLowerCase();
                         scan.nextLine();
 
                         while (escolha.equals("sim") || escolha.equals("s")) {
                             System.out.println("Digite seu ID de cliente: ");
-                            idUsu = scan.nextInt();
+                            int idUsu = scan.nextInt();
                             scan.nextLine();
 
                             // busca pelo cliente 
                             Clientes clienteSelecionado = null;
                             for (Clientes cliente : clientes) {
-                                if (cliente != null && cliente.getId() == (idUsu)) {
+                                if (cliente != null && cliente.getId() == idUsu) {
                                     clienteSelecionado = cliente;
-                                    clienteEncontrado = true;
                                     break;
                                 }
                             }
-                            if (!clienteEncontrado) {
+                            if (clienteSelecionado == null) {
                                 System.out.println("Cliente não cadastrado!");
-                            } else {
-                                // Verifica se o cliente já possui um empréstimo ativo
-                                boolean clienteJaPossuiEmprestimoAtivo = false;
-                                for (int x = 0; x < emprestimo.length; x++) {
-                                    if ((emprestimo[x] != null) && (emprestimo[x].getCliente().getId() == clienteSelecionado.getId())) {
-                                        clienteJaPossuiEmprestimoAtivo = true;
-                                        break;
-                                    }
-                                }
-                                if (clienteJaPossuiEmprestimoAtivo) {
-                                    System.out.println("Este cliente já possui um empréstimo ativo. Conclua antes de fazer outro empréstimo.");
-                                } else {
-                                    System.out.println("Informe o código do livro que deseja pegar emprestado: ");
-                                    codigo_e = scan.nextInt();
-                                    scan.nextLine();
-
-                                    //Busca pelo livro
-                                    Livros livroSelecionado = null;
-                                    for (Livros livro : livros) {
-                                        if (livro != null && livro.getMostrarIdLivro() == codigo_e) {
-                                            livroSelecionado = livro;
-                                            livroEncontrado = true;
-                                            break;
-                                        }
-                                    }
-
-                                    if (!livroEncontrado) {
-                                        System.out.println("Livro não encontrado.");
-                                    } else if (!livroSelecionado.verificarDisponibilidade()) {
-                                        System.out.println("O livro não possui exemplares disponíveis.");
-                                    } else {
-                                        System.out.println("Informe a data de empréstimo (dd/mm/aaaa)");
-                                        dataEmprestimo = scan.nextLine();
-
-                                        // Registra o novo empréstimo
-                                        emprestimo[qtdEmprestimos++] = new Emprestimo(livroSelecionado, dataEmprestimo, clienteSelecionado);
-                                        emprestimo[qtdEmprestimos - 1].realizarEmprestimo();
-                                        System.out.println("Empréstimo realizado com sucesso!");
-
-                                        //Atualiza quantidade de exemplares do livro e do cliente
-                                        livroSelecionado.setPegarlivro(1);
-                                        clienteSelecionado.setQuantidadeEmprestimos(1);
-                                    }
-                                }
+                                break;
+                            } 
+                            boolean emprestimoAtivo = false;
+                            for (int i = 0; i < emprestimo.length; i++){
+                                if (emprestimo[i] != null && emprestimo[i].getCliente().getId() == clienteSelecionado.getId()){
+                                    emprestimoAtivo = true;
+                                    break;
+                                }     
+                            }
+                            if (emprestimoAtivo){
+                                System.out.println("O cliente possui emprestimo ativo!");
+                            }
+                            else {
+                                System.out.println("Digite o código do livro que deseja: ");
+                                int codigoLivro = scan.nextInt();
                             }
 
                             System.out.println("Deseja realizar outro empréstimo? (s/n): ");
