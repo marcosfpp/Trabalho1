@@ -1,0 +1,6 @@
+Id: 1
+Nome: opa
+Autor(es): ppzim
+Quantiddade de paginas: 2025
+Numero de exemplares disponíveis: 10
+

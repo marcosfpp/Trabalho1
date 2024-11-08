@@ -271,6 +271,7 @@ public class App {
                         while ("S".equals(opc_sec) || "s".equals(opc_sec) || "Sim".equals(opc_sec) || "sim".equals(opc_sec)) {
                             System.out.println("Digite seu id de cliente:");
                             idUsuario = scan.nextInt();
+                            scan.nextLine();
 
                             // Busca pelo cliente, quando achar atribuirá o valor da respectiva posição para clienteSelecionado, tornando-se então não nula
                             Clientes clienteSelecionado = null;
@@ -404,19 +405,22 @@ public class App {
                         System.out.println("\n");
                         
                         if ("S".equals(opc_sec) || "s".equals(opc_sec) || "Sim".equals(opc_sec) || "sim".equals(opc_sec)){
-                            FileWriter arquivo = new FileWriter("./arquivos/arquivo.txt");
+                            FileWriter arquivo = new FileWriter("dados_exportados.txt", true);
                             PrintWriter gravaArquivo = new PrintWriter(arquivo);
 
+                            //gravação de livros
                             for(int i = 0; i < livros.length; i++){
                                 if (livros[i] != null){
                                     gravaArquivo.println(livros[i]);
                                 }
                             }
+                            //gravação de usuarios
                             for(int j = 0; j < clientes.length; j++){
                                 if (clientes[j] != null){
                                     gravaArquivo.println(clientes[j]);
                                 }
                             }
+                            //gravação de emprestímos
                             for(int k = 0; k < emprestimo.length; k++){
                                 if (emprestimo[k] != null){
                                     gravaArquivo.println(emprestimo[k]);
