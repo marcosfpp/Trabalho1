@@ -57,9 +57,9 @@ public class Clientes {
         @Override
         public String toString (){
             return "Nome:" + this.nome +"\n" +
-                    " com o ID: " + this.numeroID + "\n" +
+                    "ID: " + this.numeroID + "\n" +
                     "E-mail :" + this.email + "\n" +
-                    "e com o contato: " + this.telefone;
+                    "Contato: " + this.telefone;
         }
 
         
