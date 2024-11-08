@@ -281,7 +281,6 @@ public class App{
                                                     System.out.println("O usuario: " + clientes[j].getNome() + " está com o livro: " + livros[j].getMostrarNome());
                                                     System.out.println(clientes[j].getNome() + " deseja devolver o livro acima? S ou N");
                                                     opc_sec = scan.nextLine();
-
                                                     if ("S".equals(opc_sec) || "s".equals(opc_sec) || "Sim".equals(opc_sec) || "sim".equals(opc_sec)) {
                                                         for (int k = 0; k < emprestimo.length; k++) {
                                                             if (emprestimo[k] != null) {
@@ -289,8 +288,10 @@ public class App{
                                                                     emprestimo[k].setDataEmprestimo(null);
                                                                     emprestimo[k].verificarDisponibilidade();
                                                                     emprestimo[k].finalizarEmprestimo();
-                                                                    emprestimo[k].getLivro();
+                                                                    emprestimo[k].getLivro();//Criar um get para aumentar a quantidade de livro / para o livro ficar disponível;
+                                                                    //emprestimo[k].  fazer um set para retornar o emprestimo ativo para desativado 1 to 0;
                                                                     System.out.println(clientes[j].getNome() + " obrigado por devolver o livro " + livros[k].getMostrarNome());
+                                                                    //Aqui vou dar outro sout mostrando a data de dev e data de emp!!!;
                                                                 }
                                                             }
                                                         }
