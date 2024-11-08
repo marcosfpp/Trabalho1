@@ -205,30 +205,33 @@ public class App {
                                 System.out.println("Digite o código do livro que deseja: ");
                                 int codigoLivro = scan.nextInt();
                                 scan.nextLine();
-
+                                
+                                // verificação para ver se o id do cliente existe 
                                 Livros livroSelecionado = null;
                                 for (int li = 0; li < livros.length; li++) {
                                     if (livros[li] != null && livros[li].getMostrarIdLivro() == codigoLivro) {
                                         livroSelecionado = livros[li];
                                         break;
                                     }
-                                }
+                                } // caso não exista entrará nesta condição
                                 if (livroSelecionado == null) {
                                     System.out.println("Livro nao encontrado na base de dados.");
-                                } else if (!livroSelecionado.verificarDisponibilidade()) {
+                                } else if (!livroSelecionado.verificarDisponibilidade()) { // inserção de lógica caso a quantiade de exemplares esteja indisponível
                                     System.out.println("Livro indisponivel para emprestimo!");
                                 } else {
+                                    // mesma lógica utilizada para livros e usuários, para verificar se a arraya está cheia
                                     if (em > emprestimo.length - 1) {
                                         System.out.println("Nao foi possivel realizar mais emprestimos! Espaço insuficiente em nosso sistema!");
                                         scan.nextLine();
                                     }
                                     em++;
-
+                                    //verificar a última posição disponível para começar a partir dela 
                                     for (int i = 0; i < clientes.length; i++) {
                                         if (clientes[i] != null) {
                                             qtdEmprestimos++;
                                         }
                                     }
+                                    // depois de sastifazer todas as condições, somente atribuir os valores
                                     System.out.println("Digite a data de emprestimo(dd/mm/aaaa): ");
                                     String dataEmprestimo = scan.nextLine();
                                     emprestimo[qtdEmprestimos] = new Emprestimo(livroSelecionado, dataEmprestimo, clienteSelecionado);
