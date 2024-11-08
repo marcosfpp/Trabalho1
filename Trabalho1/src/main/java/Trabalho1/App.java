@@ -40,8 +40,12 @@ public class App {
             System.out.println("9- SAIR");
             
             System.out.println("Digite a opção que deseja prosseguir:");
-            opc_pri = scan.nextInt();
-            scan.nextLine();
+            try{
+                opc_pri = scan.nextInt();
+                scan.nextLine();
+            }catch (Exception e){
+                System.out.println("Erro na entrada");
+            }
             System.out.println("\n");
 
           
@@ -296,12 +300,18 @@ public class App {
                                 if (!emprestimoAtivo) {
                                     System.out.println("O cliente nao possui emprestimos ativos, nao ha nada para devolver!");
                                 } else {
+                                    //sobrecarga simples que introduz a data de devolução na classe de empresimo 
+                                    System.out.println("Digite a data de devolução: ");
+                                    String dataDevolucao = scan.nextLine();
+                                    Emprestimo devolucao = new Emprestimo(dataDevolucao);
+                                    System.out.println("\n");
+                                    
                                     // se sastifez todas as condições anteriores para encontrar o livro, então é só alterar os campos.
                                     Livros livroEmprestado = emprestimo[posicaoEmprestimo].getLivro(); //armazena na variavel livroEmprestado, do tipo Livros, o livro emprestado presente na array emprestimo na posição encontrada anteriormente
                                     livroEmprestado.setDevolverLivros(1); //devolve o livro incrementando através deste método, devida variável ser do tipo livros 
                                     clienteSelecionado.setDiminuirQuantidade(1);//diminui a quantiade de emprestimos atribuidos ao cliente, permitindo com que ele posso realizar mais emprestimos
                                     emprestimo[posicaoEmprestimo] = null; // deixa a posição do antigo empréstimo nula, permitindo mais empréstimos
-
+                                    
                                     System.out.println("Devolucao concluida!");
                                 }
                             }

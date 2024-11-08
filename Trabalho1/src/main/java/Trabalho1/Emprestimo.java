@@ -16,9 +16,7 @@ public Emprestimo(Livros livro, String dataEmprestimo, Clientes cliente) {
 }
 
 //Construtor secundário para empréstimos inativos ou apenas para consultar
-public Emprestimo(Livros livro, String dataEmprestimo, String dataDevolucao) {
-    this.livro = livro;
-    this.dataEmprestimo = dataEmprestimo;
+public Emprestimo(String dataDevolucao) {
     this.dataDevolucao = dataDevolucao;
 }
 
